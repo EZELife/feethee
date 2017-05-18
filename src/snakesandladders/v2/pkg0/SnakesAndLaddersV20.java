@@ -14,7 +14,6 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
 import static java.lang.Thread.sleep;
 import java.util.Random;
 import java.util.logging.Level;
@@ -45,7 +44,6 @@ import snakesandladders.v2.pkg0.Logic.Board;
 import snakesandladders.v2.pkg0.Logic.Board.Difficulty;
 import snakesandladders.v2.pkg0.Logic.History;
 import snakesandladders.v2.pkg0.Logic.Player;
-import snakesandladders.v2.pkg0.Logic.Squares.Square;
 
 /**
  *

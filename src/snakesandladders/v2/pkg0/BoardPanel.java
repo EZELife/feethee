@@ -50,7 +50,6 @@ public class BoardPanel extends JPanel {
         setLayout(new GridLayout(10, 10, 1, 1));
 
         for (int i = 0; i < 100; i++) {
-            //change
             label[i] = (new JLabel());
             label[i].setLayout(new BoxLayout(label[i], BoxLayout.X_AXIS));
             label[i].setOpaque(true);
@@ -82,7 +81,7 @@ public class BoardPanel extends JPanel {
         player2 = assets.getResizedIcon(color2, 30, 30);
     }
 
-    public void updatePlayers(int i, int j) {
+    public void updatePlayers(int i, int j) { //can be made to increase size based on label[] width/height
         label1.setIcon(player1);
         label[i - 1].add(label1);
         label2.setIcon(player2);
@@ -93,7 +92,7 @@ public class BoardPanel extends JPanel {
 
     public void updateSquares() {
         int i = 1;
-        for (Square temp : board.getBoardSquares()) {
+        for (Square temp : board.getBoardSquares()) { //reads the square list and adds propper icons
 
             if (temp == null) {
                 continue;

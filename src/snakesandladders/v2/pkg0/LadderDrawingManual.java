@@ -9,26 +9,11 @@ import java.awt.Shape;
 import java.awt.Stroke;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
 public class LadderDrawingManual {
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> createAndShowGUI());
-    }
 
-    private static void createAndShowGUI() {
-        JFrame f = new JFrame();
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        f.getContentPane().add(new LadderDrawingManualPanel());
-
-        f.setSize(800, 800);
-        f.setLocationRelativeTo(null);
-        f.setVisible(true);
-    }
 }
 
 class LadderDrawingManualPanel extends JPanel {
@@ -55,11 +40,6 @@ class LadderDrawingManualPanel extends JPanel {
         drawLadderBetweenPoints(g, point0, point1);
     }
 
-    /*private static void paintDot(Graphics2D g, Point2D p, double radius) {
-        g.fill(new Ellipse2D.Double(
-                p.getX() - radius, p.getY() - radius,
-                radius + radius, radius + radius));
-    }*/
     public static void drawLadderBetweenPoints(
             Graphics2D g, Point2D p0, Point2D p1) {
         final double ladderWidth = 30; //was 40

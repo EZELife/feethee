@@ -10,15 +10,10 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.Shape;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
-
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
@@ -29,14 +24,7 @@ public class SnakeDrawing {
     }
 
     private static void createAndShowGUI() {
-        JFrame f = new JFrame();
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        f.getContentPane().add(new SnakeDrawingPanel());
-
-        f.setSize(800, 800);
-        f.setLocationRelativeTo(null);
-        f.setVisible(true);
     }
 }
 
@@ -185,18 +173,12 @@ class Snake {
     }
 }
 
-class SnakeDrawingPanel extends JPanel
-        implements MouseListener, MouseMotionListener {
+class SnakeDrawingPanel extends JPanel {
 
     private Point2D point0 = new Point2D.Double(100, 500);
     private Point2D point1 = new Point2D.Double(700, 500);
     private Point2D draggedPoint = null;
     private Snake snake = new Snake();
-
-    SnakeDrawingPanel() {
-        addMouseListener(this);
-        addMouseMotionListener(this);
-    }
 
     @Override
     protected void paintComponent(Graphics gr) {
@@ -211,52 +193,6 @@ class SnakeDrawingPanel extends JPanel
 
         snake.setPoints(point0, point1);
         snake.draw(g);
-    }
-
-    @Override
-    public void mouseDragged(MouseEvent e) {
-        if (draggedPoint != null) {
-            draggedPoint.setLocation(e.getPoint());
-            repaint();
-        }
-    }
-
-    @Override
-    public void mouseMoved(MouseEvent e) {
-        // Nothing to do here
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-        // Nothing to do here
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-        draggedPoint = null;
-        double thresholdSquared = 10 * 10;
-
-        if (e.getPoint().distanceSq(point0) < thresholdSquared) {
-            draggedPoint = point0;
-        }
-        if (e.getPoint().distanceSq(point1) < thresholdSquared) {
-            draggedPoint = point1;
-        }
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-        draggedPoint = null;
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        // Nothing to do here
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-        // Nothing to do here
     }
 
 }
