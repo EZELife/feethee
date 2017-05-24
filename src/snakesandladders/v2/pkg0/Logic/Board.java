@@ -88,10 +88,10 @@ public class Board extends JPanel implements Cloneable {
         boardSquares[0] = null;
 
         //Logic
-        buildBoard(difficulty);
+        //buildBoard(difficulty);
 
         //DEBUGGING
-        //buildBoard(Difficulty.DEBUG);
+        buildBoard(Difficulty.DEBUG);
         printBoard();
         //buildBoard2(100);
         setPreferredSize(new Dimension(600, 600));
@@ -211,8 +211,8 @@ public class Board extends JPanel implements Cloneable {
                 for (int i = 2; i <= 7; i++) {
                     boardSquares[i] = new GravityReversalSquare(i);
                 }
-                buildSpecialSquare(SpecialSquareType.SNAKE, 4);
-                buildSpecialSquare(SpecialSquareType.LADDER, 4);
+                buildSpecialSquare(SpecialSquareType.SNAKE, 8);
+                buildSpecialSquare(SpecialSquareType.LADDER, 8);
 //                buildSpecialSquare(SpecialSquareType.EXPLOSION, 1);
 //                buildSpecialSquare(SpecialSquareType.LOVE, 1);
 //                buildSpecialSquare(SpecialSquareType.EXCHANGE_PAWNS, 1);

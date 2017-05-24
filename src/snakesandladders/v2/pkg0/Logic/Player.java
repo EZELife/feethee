@@ -36,10 +36,12 @@ public class Player extends JLabel{
 
         int endPos;
         
-        if(lucky && steps == 6) {
+        if(lucky) {
             lucky = false;
-            square = board.getBoardSquare(100);
-            return;
+            if(steps==6){
+                square = board.getBoardSquare(100);
+                return;
+            }
         }
 
         if (turtle) {
@@ -60,6 +62,11 @@ public class Player extends JLabel{
         
         //DEBUGGING
         System.out.println(name+" moves to square: "+square.getNumber());
+    }
+    
+    public void reset(Board board){
+        reverse = turtle = lucky = false;
+        square = board.getBoardSquare(1);
     }
 
     public int getPosition() {

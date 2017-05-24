@@ -107,13 +107,11 @@ public class PlayerPanel extends JPanel {
     }
     
     public void boldenName() {
-        name.setFont(new Font("Serif", Font.BOLD, 22));
-        name.setText(name.getText());
+        name.setText("<HTML><U>"+name.getText()+"</U></HTML>");
         name.repaint();
     }
     
     public void unBoldenName() {
-        name.setFont(new Font("Serif", Font.PLAIN, 22));
         name.setText(name.getText());
         name.repaint();
     }
