@@ -60,7 +60,8 @@ public class SnakesAndLaddersV20 extends JFrame {
     private static void createAndShowGUI() {
         SnakesAndLaddersV20 snakesAndLadders = new SnakesAndLaddersV20();
     }
-
+    
+    //TESTAKEE
     //Fields
     SnakesAndLaddersV20 snl = this; //Used in action listeners since the class cannot be accessed directly
     //Swing=====================================================================
