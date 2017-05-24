@@ -642,7 +642,7 @@ public class SnakesAndLaddersV20 extends JFrame {
 
             board = boardCopy.clone();
             for (Player player : players) {
-                player.setSquare(board.getBoardSquare(1));
+                player.reset(board);
             }
             //Resetting Gui
             updateGUI();
