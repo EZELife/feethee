@@ -5,6 +5,8 @@
  */
 package snakesandladders.v2.pkg0.Logic.Squares;
 
+import java.awt.Color;
+import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import snakesandladders.v2.pkg0.Logic.Board;
 import snakesandladders.v2.pkg0.Logic.Player;
@@ -18,10 +20,20 @@ public abstract class Square extends JLabel {
 
     //Fields
     private int number;
+    private int gridPos = 0;
+
+    private Color myColor = Color.decode("#43B7BA");
 
     //Constructors
     public Square(int number) {
         this.number = number;
+        setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
+        setOpaque(true);
+        setBackground(myColor);
+        setText("" + number);
+        setHorizontalAlignment(JLabel.RIGHT);
+        setVerticalAlignment(JLabel.BOTTOM);
+        revalidate();
     }
 
     //Methods
@@ -36,4 +48,11 @@ public abstract class Square extends JLabel {
         this.number = number;
     }
 
+    public void setGridPos(int gridPos) {
+        this.gridPos = gridPos;
+    }
+
+    public int getGridPos() {
+        return gridPos;
+    }
 }
