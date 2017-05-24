@@ -12,6 +12,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.LayoutManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import static java.lang.Thread.sleep;
@@ -34,6 +35,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JToggleButton;
+import javax.swing.OverlayLayout;
 import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
@@ -86,6 +88,7 @@ public class SnakesAndLaddersV20 extends JFrame {
     //Logic=====================================================================
     private Random random;
     private Board board, boardCopy;
+    private JPanel placeholder; //soc code
     private Player[] players;
     private Player currentPlayer;
     private boolean endTurnCondition, endGameCondition;
@@ -100,6 +103,9 @@ public class SnakesAndLaddersV20 extends JFrame {
     public SnakesAndLaddersV20() {
 
         random = new Random();
+        placeholder = new JPanel(); //soc code
+        LayoutManager overlay = new OverlayLayout(placeholder); //soc code
+        placeholder.setLayout(overlay); //soc code
 
         menuBar = buildMenuBar();
         startScreen = buildStartScreen();
@@ -147,7 +153,7 @@ public class SnakesAndLaddersV20 extends JFrame {
                 leftPane.setVisible(true);
                 midPane.setVisible(true);
                 rightPane.setVisible(true);
-                midPane.add(boardPanel);
+                midPane.add(placeholder);
                 break;
             case NONE:
                 midPane.removeAll();
@@ -188,15 +194,13 @@ public class SnakesAndLaddersV20 extends JFrame {
     }
 
     private void updateGUI() {
-        boardPanel.updateSquares();
-        boardPanel.updatePlayers(players[0].getSquare().getNumber(), players[1].getSquare().getNumber());
+        board.updateSquares(); //soc code
+        board.updatePlayers(players[0].getSquare().getNumber(), players[1].getSquare().getNumber()); //soc code
 
         playerPane1.updatePosition(players[0].getSquare().getNumber());
         playerPane2.updatePosition(players[1].getSquare().getNumber());
         historyTArea.setText(history.getHistory());
         scrollPane.getVerticalScrollBar().setValue(scrollPane.getVerticalScrollBar().getMaximum()); //Should move scrollbar on text area all the way down but doesn't <BUG>
-        //updateboardpanel
-
     }
 
     //Lazy and unreliable method should be replaced/removed
@@ -557,10 +561,10 @@ public class SnakesAndLaddersV20 extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            
+
             rollButton.setSelected(false);
             rollButton.setEnabled(true);
-            
+
             String playerName, playerColor, COMColor;
             players = new Player[2];
             history = new History();
@@ -588,21 +592,23 @@ public class SnakesAndLaddersV20 extends JFrame {
                     board = new Board(Difficulty.HARD);
                     break;
             }
+            
+            players[0] = new Player(board.getBoardSquare(1), playerName, playerColor);
+            players[0].setColor(playerColor);//soc code
+            players[1] = new Player(board.getBoardSquare(1), "Computer", COMColor);
+            players[1].setColor(COMColor);// soc code
+            board.setPlayers(players[0], players[1]);
+            currentPlayer = players[random.nextInt(2)]; //Select a random player to go first
+            boldenPlayerPane(currentPlayer);
+            
             //Used to reset any effects that have affected the board(Gravity Reversal)
             boardCopy = board.clone();
 
-            //@SOC CODE
-            boardPanel = new BoardPanel(board);
-            boardPanel.setPlayerColors(playerColor, COMColor);
+            boardPanel = new BoardPanel(board); //soc code
+            placeholder.add(boardPanel); //soc code
+            placeholder.add(board); //soc code
 
             //=========
-
-            //boardPanel = new BoardPanel(board);
-            players[0] = new Player(board.getBoardSquare(1), playerName, playerColor);
-            players[1] = new Player(board.getBoardSquare(1), "Computer", COMColor);
-            currentPlayer = players[random.nextInt(2)]; //Select a random player to go first
-            boldenPlayerPane(currentPlayer);
-
             history.append("Game is Starting");
             history.append(currentPlayer.getName() + " goes first");
 
@@ -634,7 +640,7 @@ public class SnakesAndLaddersV20 extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            
+
             rollButton.setSelected(false);
             rollButton.setEnabled(true);
             history.reset();

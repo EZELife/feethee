@@ -5,6 +5,7 @@
  */
 package snakesandladders.v2.pkg0.Logic.Squares;
 
+import javax.swing.JLabel;
 import snakesandladders.v2.pkg0.Logic.Board;
 import snakesandladders.v2.pkg0.Logic.Player;
 import snakesandladders.v2.pkg0.SnakesAndLaddersV20;
@@ -13,7 +14,7 @@ import snakesandladders.v2.pkg0.SnakesAndLaddersV20;
  *
  * @author Zac
  */
-public abstract class Square {
+public abstract class Square extends JLabel {
 
     //Fields
     private int number;

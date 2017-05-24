@@ -11,12 +11,8 @@ import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import javax.swing.JPanel;
 
-public class LadderDrawingManual {
 
-
-}
-
-class LadderDrawingManualPanel extends JPanel {
+public class LadderDrawingManualPanel extends JPanel {
 
     private Point2D point0; //= new Point2D.Double(100, 100);
     private Point2D point1; //= new Point2D.Double(500, 500);

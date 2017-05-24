@@ -15,20 +15,19 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
-public class SnakeDrawing {
+//public class SnakeDrawing {
+//
+//    public static void main(String[] args) {
+//        SwingUtilities.invokeLater(() -> createAndShowGUI());
+//    }
+//
+//    private static void createAndShowGUI() {
+//
+//    }
+//}
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> createAndShowGUI());
-    }
-
-    private static void createAndShowGUI() {
-
-    }
-}
-
-class Snake {
+public class Snake {
 
     private Point2D point0 = new Point2D.Double(100, 500);
     private Point2D point1 = new Point2D.Double(700, 500);

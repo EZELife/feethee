@@ -5,7 +5,14 @@
  */
 package snakesandladders.v2.pkg0.Logic;
 
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.util.Random;
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import snakesandladders.v2.pkg0.Assets;
 import snakesandladders.v2.pkg0.Logic.Squares.CancelReverseSquare;
 import snakesandladders.v2.pkg0.Logic.Squares.CancelTurtleSquare;
 import snakesandladders.v2.pkg0.Logic.Squares.DefaultSquare;
@@ -28,7 +35,7 @@ import snakesandladders.v2.pkg0.Logic.Squares.TurtleSquare;
  *
  * @author Zac
  */
-public class Board implements Cloneable {
+public class Board extends JPanel implements Cloneable {
 
     //Allows Cloning of the class for resetting the game
     @Override
@@ -69,22 +76,108 @@ public class Board implements Cloneable {
     private boolean rebuild; //Used to rebuild Board in case of failure
     private Random random;
     private Square[] boardSquares;
+    private Color myColor = Color.decode("#43B7BA");
+    private Player player1;
+    private Player player2;
+    private Assets assets;
+    private Square[] square = new Square[100];
 
     //Constructors
     public Board(Difficulty difficulty) {
-
+        this.setOpaque(false); //soc code
         //Init
+        assets = new Assets();
         random = new Random();
         boardSquares = new Square[101];
         boardSquares[0] = null;
 
         //Logic
         buildBoard(difficulty);
-        
+
         //DEBUGGING
         buildBoard(Difficulty.DEBUG);
         printBoard();
         //buildBoard2(100);
+        setPreferredSize(new Dimension(600, 600));
+
+        int[] temp = {81, 61, 41, 21, 1};
+        int[] temp2 = {100, 80, 60, 40, 20};
+        setLayout(new GridLayout(10, 10, 1, 1));
+
+        for (int i = 0; i < 100; i++) {
+            square[i] = (new DefaultSquare(i));
+            square[i].setLayout(new BoxLayout(square[i], BoxLayout.X_AXIS));
+            square[i].setOpaque(true);
+            square[i].setBackground(myColor);
+            square[i].setText("" + (i + 1));
+            square[i].setHorizontalAlignment(JLabel.RIGHT);
+            square[i].setVerticalAlignment(JLabel.BOTTOM);
+            square[i].revalidate();
+        }
+        for (int i = 0; i < 10; i++) { //add jlabels to jpanel in correct order
+
+            int count1 = temp[(int) i / 2];
+            int count2 = temp2[(int) i / 2];
+            for (int j = 0; j < 10; j++) {
+                if (i % 2 == 0) {
+                    add(square[count2-- - 1]);
+                    revalidate();
+                } else {
+                    add(square[count1++ - 1]);
+                    revalidate();
+                }
+            }
+        }
+        this.revalidate();
+    }
+
+//    public void setPlayerColors(String color, String color2) {
+//        player1 = assets.getResizedIcon(color, 30, 30);
+//        player2 = assets.getResizedIcon(color2, 30, 30);
+//    }
+    public void updateSquares() {
+        int i = 1;
+        for (Square temp : boardSquares) { //reads the square list and adds propper icons
+
+            if (temp == null) {
+                continue;
+            }
+            if (temp instanceof ExplosionSquare) {
+                square[i - 1].setIcon(assets.getResizedIcon("explosion", 35, 40));
+            } else if (temp instanceof LoveSquare) {
+                square[i - 1].setIcon(assets.getResizedIcon("love", 35, 40));
+            } else if (temp instanceof ExchangePawnsSquare) {
+                square[i - 1].setIcon(assets.getResizedIcon("exchange_pawns", 35, 40));
+            } else if (temp instanceof RethrowDiceSquare) {
+                square[i - 1].setIcon(assets.getResizedIcon("rethrow_dice", 35, 40));
+            } else if (temp instanceof LuckySquare) {
+                square[i - 1].setIcon(assets.getResizedIcon("clover4", 35, 40));
+            } else if (temp instanceof GravityReversalSquare) {
+                square[i - 1].setIcon(assets.getResizedIcon("gravity_reversal", 35, 40));
+            } else if (temp instanceof ReverseSquare) {
+                square[i - 1].setIcon(assets.getResizedIcon("reverse", 35, 40));
+            } else if (temp instanceof TurtleSquare) {
+                square[i - 1].setIcon(assets.getResizedIcon("turtle", 35, 40));
+            } else if (temp instanceof CancelTurtleSquare) {
+                square[i - 1].setIcon(assets.getResizedIcon("turtle_cancel", 35, 40));
+            } else if (temp instanceof CancelReverseSquare) {
+                square[i - 1].setIcon(assets.getResizedIcon("reverse_cancel", 35, 40));
+            }
+            square[i - 1].setHorizontalAlignment(JLabel.RIGHT);
+            square[i - 1].setVerticalTextPosition(JLabel.BOTTOM);
+            i++;
+        }
+    }
+
+    public void updatePlayers(int i, int j) { //can be made to increase size based on label[] width/height
+        square[i - 1].add(player1);
+        square[j - 1].add(player2);
+        repaint();
+    }
+
+    public void setPlayers(Player player1, Player player2) {
+        this.player1 = player1;
+        this.player2 = player2;
     }
 
     //Methods
@@ -267,7 +360,7 @@ public class Board implements Cloneable {
     }
 
     private boolean isFree(int number) {
-        
+
         //This code doesn't work 100% reliably not sure why <BUG>
         for (int i = Math.max(number - specialSquareDensity, 2);
                 i <= Math.min(number + specialSquareDensity, 99); i++) {
@@ -366,8 +459,11 @@ public class Board implements Cloneable {
         }
     }
 
-    public static void main(String[] args) {
-        Board board = new Board(Difficulty.DEBUG);
+//    public static void main(String[] args) {
+//        Board board = new Board(Difficulty.DEBUG, player1, player2);
+//    }
+    public Square[] getSquare() {
+        return square;
     }
 
 }

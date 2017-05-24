@@ -5,18 +5,21 @@
  */
 package snakesandladders.v2.pkg0.Logic;
 
+import javax.swing.JLabel;
+import snakesandladders.v2.pkg0.Assets;
 import snakesandladders.v2.pkg0.Logic.Squares.Square;
 
 /**
  *
  * @author Zac
  */
-public class Player {
+public class Player extends JLabel{
 
     //Fields
     private Square square;
     private String name, color;
     private boolean reverse, turtle, lucky, appliedEffects;
+    private Assets assets; //soc code
 
     //Constructors
     public Player(Square square, String name, String color) {
@@ -25,6 +28,7 @@ public class Player {
         this.color = color;
         reverse = turtle = lucky = false;
         appliedEffects = true;
+        assets = new Assets(); //soc code
     }
 
     //Methods
@@ -90,6 +94,7 @@ public class Player {
 
     public void setColor(String color) {
         this.color = color;
+        setIcon(assets.getResizedIcon(color, 30, 30));
     }
 
     public boolean isReverse() {
