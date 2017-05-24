@@ -40,10 +40,6 @@ public class GUIDice extends JPanel {
         gbc = new GridBagConstraints();
         for (int i = 1; i <= 6; i++) {
             dieImg[i] = assets.getResizedIcon("dice"+i, 128, 128);
-//            dieImg[i] = new ImageIcon("D:\\Zac\\Desktop\\snakeIcons\\dice" + i
-//                    + ".png");
-//            dieImg[i].setImage(dieImg[i].getImage().getScaledInstance(128, 128,
-//                    Image.SCALE_SMOOTH));
         }
         die.setIcon(dieImg[1]);
         

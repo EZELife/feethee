@@ -25,7 +25,6 @@ public class ReverseSquare extends Square {
             player1.setReverse(true);
             snl.getHistory().append(player1.getName()+" stepped on a reverse square\n"+player1.getName()+"'s movements have been reversed");
         }
-        player1.setAppliedEffects(true);
     }
 
 }

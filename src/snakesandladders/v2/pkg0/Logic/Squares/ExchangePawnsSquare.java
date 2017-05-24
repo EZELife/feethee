@@ -24,7 +24,6 @@ public class ExchangePawnsSquare extends Square {
         Square temp = player1.getSquare();
         player1.setSquare(player2.getSquare());
         player2.setSquare(temp);
-        player2.setAppliedEffects(true);
         snl.getHistory().append(player1.getName()+" stepped on an exchange pawns square");
     }
 

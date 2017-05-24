@@ -33,14 +33,14 @@ public class GravityReversalSquare extends Square {
                 oldNum = i.getNumber();
                 newNum = ((SnakeSquare) i).getDest().getNumber();
                 
-                board.setBoardSquare(oldNum, new OccupiedSquare(oldNum)); //Replaces previous SnakeSquare with a DefaultSquare
+                board.setBoardSquare(oldNum, new DefaultSquare(oldNum, true)); //Replaces previous SnakeSquare with a DefaultSquare
                 board.setBoardSquare(newNum, new LadderSquare(newNum, board.getBoardSquare(oldNum))); //Replace LadderSquare to-be with a LadderSquare
                 noTouch.add(board.getBoardSquare(newNum)); //This is probably redundant
             } else if(i instanceof LadderSquare && !noTouch.contains(i)) {
                 oldNum = i.getNumber();
                 newNum = ((LadderSquare) i).getDest().getNumber();
                 
-                board.setBoardSquare(oldNum, new OccupiedSquare(oldNum)); //Replaces previous LadderSquare with a DefaultSquare
+                board.setBoardSquare(oldNum, new DefaultSquare(oldNum, true)); //Replaces previous LadderSquare with a DefaultSquare
                 board.setBoardSquare(newNum, new SnakeSquare(newNum, board.getBoardSquare(oldNum))); //Replace SnakeSquare to-be with a LadderSquare
                 noTouch.add(board.getBoardSquare(newNum));
             }
@@ -48,7 +48,6 @@ public class GravityReversalSquare extends Square {
         
         
 //        player2.setAppliedEffects(false);
-        player1.setAppliedEffects(true);
         
         snl.getHistory().append(player1.getName()+" stepped on a gravity reversal square");
         

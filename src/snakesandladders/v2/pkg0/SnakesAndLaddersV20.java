@@ -1,7 +1,7 @@
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
- * and open the template in the editor. TESTAKEE
+ * and open the template in the editor.
  */
 package snakesandladders.v2.pkg0;
 
@@ -255,17 +255,9 @@ public class SnakesAndLaddersV20 extends JFrame {
         currentPlayer.advance(result, board);
         history.append(currentPlayer.getName() + " moves to square " + currentPlayer.getSquare().getNumber());
         updateGUI();
-        //Applying effects as many times as needed 
-        //Alternatively: apply effects at the start and end of each round (Wouldn't work <p steps on exchange, lands on rethrow>)
-        //Another Alternative: make applyEffects method for player (probably best option)
-        while (!currentPlayer.isAppliedEffects() || !getOtherPlayer().isAppliedEffects()) {
-            if (!currentPlayer.isAppliedEffects()) {
-                currentPlayer.getSquare().applyEffect(currentPlayer, getOtherPlayer(), board, snl);
-            }
-            if (!getOtherPlayer().isAppliedEffects()) {
-                getOtherPlayer().getSquare().applyEffect(getOtherPlayer(), currentPlayer, board, snl);
-            }
-        }
+        
+        currentPlayer.getSquare().applyEffect(currentPlayer, getOtherPlayer(), board, snl);
+                
         updateGUI();
     }
 
@@ -640,6 +632,8 @@ public class SnakesAndLaddersV20 extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            
+            endGameCondition = false;
 
             rollButton.setSelected(false);
             rollButton.setEnabled(true);

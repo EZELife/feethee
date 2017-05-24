@@ -25,7 +25,6 @@ public class CancelReverseSquare extends Square {
             player1.setReverse(false);
             snl.getHistory().append(player1.getName()+" stepped on an cancel reverse square\n"+player1.getName()+"'s reverse effect has been removed");
         }
-        player1.setAppliedEffects(true);
     }
 
 }

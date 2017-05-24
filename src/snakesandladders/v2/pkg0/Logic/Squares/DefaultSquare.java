@@ -15,14 +15,31 @@ import snakesandladders.v2.pkg0.SnakesAndLaddersV20;
  * @author Zac
  */
 public class DefaultSquare extends Square {
+    
+    private boolean occupied;
 
     public DefaultSquare(int number) {
         super(number);
+        occupied = false;
+    }
+    
+    public DefaultSquare(int number, boolean occupied) {
+        super(number);
+        this.occupied = occupied;
     }
 
     @Override
     public void applyEffect(Player player1, Player player2, Board board, SnakesAndLaddersV20 snl) {
-        player1.setAppliedEffects(true);
     }
+
+    public boolean isOccupied() {
+        return occupied;
+    }
+
+    public void setOccupied(boolean occupied) {
+        this.occupied = occupied;
+    }
+    
+    
 
 }

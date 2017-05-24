@@ -24,7 +24,6 @@ public class EndSquare extends Square {
         System.out.println("GAME FINISHED");
         snl.getHistory().append(player1.getName()+" Wins!");
         snl.setEndGameCondition(true);
-        player1.setAppliedEffects(true);
     }
 
 }

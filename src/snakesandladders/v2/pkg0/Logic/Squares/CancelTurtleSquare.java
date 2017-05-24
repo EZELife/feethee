@@ -25,7 +25,6 @@ public class CancelTurtleSquare extends Square {
             player1.setTurtle(false);
             snl.getHistory().append(player1.getName()+" stepped on an cancel turtle square\n" +player1.getName()+ "'s turtle effect has been removed");
         }
-        player1.setAppliedEffects(true);
     }
 
 }

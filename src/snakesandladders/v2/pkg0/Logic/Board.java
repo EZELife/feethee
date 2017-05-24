@@ -23,7 +23,6 @@ import snakesandladders.v2.pkg0.Logic.Squares.GravityReversalSquare;
 import snakesandladders.v2.pkg0.Logic.Squares.LadderSquare;
 import snakesandladders.v2.pkg0.Logic.Squares.LoveSquare;
 import snakesandladders.v2.pkg0.Logic.Squares.LuckySquare;
-import snakesandladders.v2.pkg0.Logic.Squares.OccupiedSquare;
 import snakesandladders.v2.pkg0.Logic.Squares.RethrowDiceSquare;
 import snakesandladders.v2.pkg0.Logic.Squares.ReverseSquare;
 import snakesandladders.v2.pkg0.Logic.Squares.SnakeSquare;
@@ -95,7 +94,7 @@ public class Board extends JPanel implements Cloneable {
         buildBoard(difficulty);
 
         //DEBUGGING
-        buildBoard(Difficulty.DEBUG);
+        //buildBoard(Difficulty.DEBUG);
         printBoard();
         //buildBoard2(100);
         setPreferredSize(new Dimension(600, 600));
@@ -277,7 +276,7 @@ public class Board extends JPanel implements Cloneable {
                         dest = random.nextInt(100) + 1;
                     }
                     boardSquares[randomNum] = new SnakeSquare(randomNum, boardSquares[dest]);
-                    boardSquares[dest] = new OccupiedSquare(dest);
+                    ((DefaultSquare) boardSquares[dest]).setOccupied(true);
 
                     //DEBUGGING
                     //System.out.println("Tried to make snake : SNAKE @ " + randomNum + " | " + boardSquares[randomNum].getNumber() + " - " + ((SnakeSquare) boardSquares[randomNum]).getDest().getNumber());
@@ -289,7 +288,7 @@ public class Board extends JPanel implements Cloneable {
                         dest = random.nextInt(100) + 1;
                     }
                     boardSquares[randomNum] = new LadderSquare(randomNum, boardSquares[dest]);
-                    boardSquares[dest] = new OccupiedSquare(dest);
+                    ((DefaultSquare) boardSquares[dest]).setOccupied(true);
 
                     //DEBUGGING
                     //System.out.println("Tried to make ladder : LADDER @ " + randomNum + " | " + boardSquares[randomNum].getNumber() + " - " + ((LadderSquare) boardSquares[randomNum]).getDest().getNumber());
@@ -362,14 +361,14 @@ public class Board extends JPanel implements Cloneable {
     private boolean isFree(int number) {
 
         //This code doesn't work 100% reliably not sure why <BUG>
-        for (int i = Math.max(number - specialSquareDensity, 2);
-                i <= Math.min(number + specialSquareDensity, 99); i++) {
-            if (!(boardSquares[i] instanceof DefaultSquare)) {
-                return false;
-            }
-        }
+//        for (int i = Math.max(number - specialSquareDensity, 2);
+//                i <= Math.min(number + specialSquareDensity, 99); i++) {
+//            if (!(boardSquares[i] instanceof DefaultSquare)) {
+//                return false;
+//            }
+//        }
 
-        if (boardSquares[number] instanceof DefaultSquare) {
+        if (boardSquares[number] instanceof DefaultSquare && !((DefaultSquare) boardSquares[number]).isOccupied()) {
             return true;
         }
 

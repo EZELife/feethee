@@ -25,7 +25,6 @@ public class TurtleSquare extends Square {
             player1.setTurtle(true);
             snl.getHistory().append(player1.getName()+" stepped on a turtle square\n"+player1.getName() + " has been slowed");
         }
-        player1.setAppliedEffects(true);
     }
 
 }

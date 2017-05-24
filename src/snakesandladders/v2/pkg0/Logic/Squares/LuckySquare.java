@@ -25,7 +25,6 @@ public class LuckySquare extends Square {
         snl.getHistory().append(player1.getName()+" stepped on a lucky square");
         
         player1.setLucky(true);
-        player1.setAppliedEffects(true);
         snl.getRollButton().setSelected(false);
         snl.getRollButton().setEnabled(true);
         snl.setEndTurnCondition(false);

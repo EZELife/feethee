@@ -18,7 +18,7 @@ public class Player extends JLabel{
     //Fields
     private Square square;
     private String name, color;
-    private boolean reverse, turtle, lucky, appliedEffects;
+    private boolean reverse, turtle, lucky;
     private Assets assets; //soc code
 
     //Constructors
@@ -27,7 +27,6 @@ public class Player extends JLabel{
         this.name = name;
         this.color = color;
         reverse = turtle = lucky = false;
-        appliedEffects = true;
         assets = new Assets(); //soc code
     }
 
@@ -39,7 +38,6 @@ public class Player extends JLabel{
         if(lucky && steps == 6) {
             lucky = false;
             square = board.getBoardSquare(100);
-            appliedEffects = false;
             return;
         }
 
@@ -58,7 +56,6 @@ public class Player extends JLabel{
         }
 
         square = board.getBoardSquare(endPos);
-        appliedEffects = false;
         
         //DEBUGGING
         System.out.println(name+" moves to square: "+square.getNumber());
@@ -75,7 +72,6 @@ public class Player extends JLabel{
 
     public void setSquare(Square square) {
         this.square = square;
-        appliedEffects = false;
         //DEBUGGING
         System.out.println(name+" moves to square: "+square.getNumber());
     }
@@ -119,14 +115,6 @@ public class Player extends JLabel{
 
     public void setLucky(boolean lucky) {
         this.lucky = lucky;
-    }
-
-    public boolean isAppliedEffects() {
-        return appliedEffects;
-    }
-
-    public void setAppliedEffects(boolean appliedEffects) {
-        this.appliedEffects = appliedEffects;
     }
 
 }

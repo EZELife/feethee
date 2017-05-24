@@ -27,7 +27,6 @@ public class RethrowDiceSquare extends Square {
         snl.getRollButton().setSelected(false);
         snl.getRollButton().setEnabled(true);
         snl.setEndTurnCondition(false);
-        player1.setAppliedEffects(true);
         
     }
 

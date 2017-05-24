@@ -25,7 +25,6 @@ public class LoveSquare extends Square {
         snl.getHistory().append(player1.getName()+" stepped on a love square\n"+player2.getName()+" has moved to square 1");
         
         player2.setSquare(board.getBoardSquare(1));
-        player1.setAppliedEffects(true);
     }
 
 }
