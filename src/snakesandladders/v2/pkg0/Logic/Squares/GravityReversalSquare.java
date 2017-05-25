@@ -23,6 +23,9 @@ public class GravityReversalSquare extends Square {
 
     @Override
     public void applyEffect(Player player1, Player player2, Board board, SnakesAndLaddersV20 snl) {
+        
+        
+        
 
         int oldNum, newNum;
         ArrayList<Square> noTouch = new ArrayList<Square>(); //Used to ensure ladders that have swapped to snakes don't get swapped to ladders again
@@ -51,7 +54,13 @@ public class GravityReversalSquare extends Square {
         }
 
 //        player2.setAppliedEffects(false);
-        snl.getHistory().append(player1.getName() + " stepped on a gravity reversal square");
+        if(player1 != null){
+            snl.getHistory().append(player1.getName() + " stepped on a gravity reversal square");
+            snl.timesGravityHasChanged++;
+            System.out.println(""+snl.timesGravityHasChanged);
+        } else {
+            System.out.println("RESETGRAVITY");
+        }
         int[] temp = {81, 61, 41, 21, 1};
         int[] temp2 = {100, 80, 60, 40, 20};
         board.removeAll();
@@ -71,6 +80,7 @@ public class GravityReversalSquare extends Square {
             }
         }
        this.revalidate();
+       
     }
 
 }

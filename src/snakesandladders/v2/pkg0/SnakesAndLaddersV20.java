@@ -61,7 +61,10 @@ public class SnakesAndLaddersV20 extends JFrame {
         SnakesAndLaddersV20 snakesAndLadders = new SnakesAndLaddersV20();
     }
     
-    //TESTAKEE
+    //Replacement for clone maybe?
+    public int timesGravityHasChanged = 0;
+    
+    
     //Fields
     SnakesAndLaddersV20 snl = this; //Used in action listeners since the class cannot be accessed directly
     //Swing=====================================================================
@@ -642,8 +645,9 @@ public class SnakesAndLaddersV20 extends JFrame {
             rollButton.setSelected(false);
             rollButton.setEnabled(true);
             history.reset();
-
-            board = boardCopy.clone();
+            
+            board.reset(snl);
+//            board = boardCopy.clone();
             for (Player player : players) {
                 player.reset(board);
             }

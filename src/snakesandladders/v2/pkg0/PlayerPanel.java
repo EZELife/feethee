@@ -110,14 +110,14 @@ public class PlayerPanel extends JPanel {
     }
     
     public void boldenName() {
-        System.out.println("Boldening "+name);
+//        System.out.println("Boldening "+name);
 //        reAdd();
         nameLabel.setText("<HTML><U>"+name+"</U></HTML>");
         nameLabel.repaint();
     }
     
     public void unBoldenName() {
-        System.out.println("Unboldening "+name);
+//        System.out.println("Unboldening "+name);
 //        reAdd();
         nameLabel.setText(name);
         nameLabel.repaint();
