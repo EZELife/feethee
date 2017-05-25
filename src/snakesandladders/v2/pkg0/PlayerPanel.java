@@ -17,7 +17,8 @@ public class PlayerPanel extends JPanel {
     
     //Variables
     private GridBagConstraints gbc;
-    private JLabel pawn, name, positionText;
+    private String name;
+    private JLabel pawn, nameLabel, positionText;
     private ImageIcon pawnImg;
     private Border border;
     
@@ -32,7 +33,8 @@ public class PlayerPanel extends JPanel {
         gbc = new GridBagConstraints();
         pawnImg = assets.getResizedIcon(playerColor, 60, 60);
         pawn = new JLabel("" , pawnImg, JLabel.CENTER);
-        name = new JLabel(playerName);
+        name = playerName;
+        nameLabel = new JLabel(name);
         positionText = new JLabel("Position "+1);
         
         //PlayerPanel
@@ -44,8 +46,8 @@ public class PlayerPanel extends JPanel {
         //pawn.setBorder(border);
         
         //name
-        name.setFont(new Font("Serif", Font.PLAIN, 22));
-        name.setForeground(Color.BLUE);
+        nameLabel.setFont(new Font("Serif", Font.PLAIN, 22));
+        nameLabel.setForeground(Color.BLUE);
         //name.setBorder(border);
         
         //position
@@ -60,8 +62,8 @@ public class PlayerPanel extends JPanel {
         gbc.gridx = 1;
         gbc.gridy = 0;
         gbc.insets = new Insets(2, 0, 2, 0); //top left down right
-        gbc.anchor = GridBagConstraints.LINE_START;
-        add(name, gbc);
+//        gbc.anchor = GridBagConstraints.LINE_START;
+        add(nameLabel, gbc);
         gbc.gridx = 1;
         gbc.gridy = 1;
         add(positionText, gbc);
@@ -84,46 +86,51 @@ public class PlayerPanel extends JPanel {
     }
     
     public void updateName(String name) {
-        this.name.setText(name);
+        this.name = name;
+        nameLabel.setText(name);
         repaint();
     }
     
     private void updateTextColor(String color) {
         
         switch (color) {
-            case "pawn_blue": name.setForeground(Color.BLUE);
+            case "pawn_blue": nameLabel.setForeground(Color.BLUE);
             break;
-            case "pawn_red": name.setForeground(Color.RED);
+            case "pawn_red": nameLabel.setForeground(Color.RED);
             break;
-            case "pawn_green": name.setForeground(Color.GREEN);
+            case "pawn_green": nameLabel.setForeground(Color.GREEN);
             break;
-            case "pawn_magenta": name.setForeground(Color.MAGENTA);
+            case "pawn_magenta": nameLabel.setForeground(Color.MAGENTA);
             break;
-            default: name.setForeground(Color.BLACK);
+            default: nameLabel.setForeground(Color.BLACK);
             break;
         }
-        name.repaint();
+        nameLabel.repaint();
         
     }
     
     public void boldenName() {
-        name.setText("<HTML><U>"+name.getText()+"</U></HTML>");
-        name.repaint();
+        System.out.println("Boldening "+name);
+//        reAdd();
+        nameLabel.setText("<HTML><U>"+name+"</U></HTML>");
+        nameLabel.repaint();
     }
     
     public void unBoldenName() {
-        name.setText(name.getText());
-        name.repaint();
+        System.out.println("Unboldening "+name);
+//        reAdd();
+        nameLabel.setText(name);
+        nameLabel.repaint();
     }
     
     //GetterSetters
 
-    public JLabel getNameString() {
-        return name;
+    public JLabel getNameLabelString() {
+        return nameLabel;
     }
 
-    public void setName(JLabel name) {
-        this.name = name;
+    public void setNameLabel(JLabel name) {
+        this.nameLabel = name;
     }
     
     

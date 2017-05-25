@@ -82,7 +82,8 @@ public class SnakesAndLaddersV20 extends JFrame {
     private History history;
     private GUIDice die;
     private SnakeTimer timerField;
-    private PlayerPanel playerPane1, playerPane2; //Should be an array
+//    private PlayerPanel playerPane1, playerPane2; //Should be an array
+    private PlayerPanel[] playerPanes;
     private BoardPanel boardPanel;
     //==========================================================================
 
@@ -197,22 +198,23 @@ public class SnakesAndLaddersV20 extends JFrame {
     private void updateGUI() {
         board.updateSquares(); //soc code
         board.updatePlayers(players[0].getSquare().getNumber(), players[1].getSquare().getNumber()); //soc code
-
-        playerPane1.updatePosition(players[0].getSquare().getNumber());
-        playerPane2.updatePosition(players[1].getSquare().getNumber());
+        
+        for (int i = 0; i < 2; i++) {
+            playerPanes[i].updatePosition(players[i].getSquare().getNumber());
+        }
         historyTArea.setText(history.getHistory());
         scrollPane.getVerticalScrollBar().setValue(scrollPane.getVerticalScrollBar().getMaximum()); //Should move scrollbar on text area all the way down but doesn't <BUG>
     }
 
     //Lazy and unreliable method should be replaced/removed
     //It doesn't work no idea why <BUG>
-    private void boldenPlayerPane(Player player) {
-        if (playerPane1.getNameString().equals(player.getName())) {
-            playerPane2.unBoldenName();
-            playerPane1.boldenName();
+    private void highlightPlayer(Player player) {
+        if(player == players[0]){
+            playerPanes[0].boldenName();
+            playerPanes[1].unBoldenName();
         } else {
-            playerPane1.unBoldenName();
-            playerPane2.boldenName();
+            playerPanes[1].boldenName();
+            playerPanes[0].unBoldenName();
         }
     }
 
@@ -266,7 +268,7 @@ public class SnakesAndLaddersV20 extends JFrame {
         currentPlayer = getOtherPlayer();
         rollButton.setSelected(false);
         rollButton.setEnabled(true);
-        boldenPlayerPane(currentPlayer);
+        highlightPlayer(currentPlayer);
     }
 
     //Main Panel Building Methods===============================================
@@ -363,8 +365,9 @@ public class SnakesAndLaddersV20 extends JFrame {
         JLabel timerLabel = new JLabel("TIMER");
         die = new GUIDice();
         timerField = new SnakeTimer();
-        playerPane1 = new PlayerPanel("Player", "pawn_blue");
-        playerPane2 = new PlayerPanel("Computer", "pawn_red");
+        playerPanes = new PlayerPanel[2];
+        playerPanes[0] = new PlayerPanel("Player", "pawn_blue");
+        playerPanes[1] = new PlayerPanel("Computer", "pawn_red");
         gbcReset();
 
         //Logic
@@ -398,9 +401,9 @@ public class SnakesAndLaddersV20 extends JFrame {
         //rightDownPane.setBorder(blackBorder);
         //rightDownPane.setBackground(Color.decode("#e0e0e0"));
         rightDownPane.setPreferredSize(new Dimension(320, 240));
-        rightDownPane.add(playerPane1, gbc);
+        rightDownPane.add(playerPanes[0], gbc);
         gbc.gridy = 1;
-        rightDownPane.add(playerPane2, gbc);
+        rightDownPane.add(playerPanes[1], gbc);
         gbcReset();
 
         rightPane.add(rightUpPane);
@@ -569,10 +572,10 @@ public class SnakesAndLaddersV20 extends JFrame {
             playerColor = toggleButtons.getSelection().getActionCommand();
             COMColor = getCOMColor(playerColor);
 
-            playerPane1.updateName(playerName);
-            playerPane1.updateColor(playerColor);
-            playerPane2.updateName("Computer");
-            playerPane2.updateColor(COMColor);
+            playerPanes[0].updateName(playerName);
+            playerPanes[0].updateColor(playerColor);
+            playerPanes[1].updateName("Computer");
+            playerPanes[1].updateColor(COMColor);
 
             switch (radioButtons.getSelection().getActionCommand()) {
                 case "easy":
@@ -592,7 +595,7 @@ public class SnakesAndLaddersV20 extends JFrame {
             players[1].setColor(COMColor);// soc code
             board.setPlayers(players[0], players[1]);
             currentPlayer = players[random.nextInt(2)]; //Select a random player to go first
-            boldenPlayerPane(currentPlayer);
+            highlightPlayer(currentPlayer);
             
             //Used to reset any effects that have affected the board(Gravity Reversal)
             boardCopy = board.clone();
@@ -841,22 +844,6 @@ public class SnakesAndLaddersV20 extends JFrame {
 
     public void setTimerField(SnakeTimer timerField) {
         this.timerField = timerField;
-    }
-
-    public PlayerPanel getPlayerPane1() {
-        return playerPane1;
-    }
-
-    public void setPlayerPane1(PlayerPanel playerPane1) {
-        this.playerPane1 = playerPane1;
-    }
-
-    public PlayerPanel getPlayerPane2() {
-        return playerPane2;
-    }
-
-    public void setPlayerPane2(PlayerPanel playerPane2) {
-        this.playerPane2 = playerPane2;
     }
 
     public BoardPanel getBoardPanel() {
