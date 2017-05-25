@@ -114,7 +114,7 @@ public class Board extends JPanel implements Cloneable {
                     //boardSquares[count1++].setGridPos(gridPosCounter++);
                     revalidate();
                 }
-                System.out.println("gridPosCounter = " + gridPosCounter);
+//                System.out.println("gridPosCounter = " + gridPosCounter);
             }
         }
         this.revalidate();
@@ -374,7 +374,6 @@ public class Board extends JPanel implements Cloneable {
         boardSquares[num] = square;
         repaint();
         revalidate();
-        System.out.println("Get x = " + boardSquares[num].getLocation() );
     }
 
     //DEBUGGING
