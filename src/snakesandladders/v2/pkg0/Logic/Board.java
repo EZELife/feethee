@@ -26,6 +26,7 @@ import snakesandladders.v2.pkg0.Logic.Squares.SnakeSquare;
 import snakesandladders.v2.pkg0.Logic.Squares.Square;
 import snakesandladders.v2.pkg0.Logic.Squares.StartSquare;
 import snakesandladders.v2.pkg0.Logic.Squares.TurtleSquare;
+import snakesandladders.v2.pkg0.SnakesAndLaddersV20;
 
 /**
  *
@@ -33,6 +34,21 @@ import snakesandladders.v2.pkg0.Logic.Squares.TurtleSquare;
  */
 public class Board extends JPanel implements Cloneable {
 
+    //Cloning replacement maybe
+    public void reset(SnakesAndLaddersV20 snl){
+        if(snl.timesGravityHasChanged%2!=0){
+            System.out.println("mpeeka");
+//            for(Square i: boardSquares){
+//                if(i instanceof GravityReversalSquare){
+//                    i.applyEffect(null, null, this, snl);
+//                }
+//            }
+            Square temp = new GravityReversalSquare(1000);
+            temp.applyEffect(null, null, this, snl);
+        }
+        snl.timesGravityHasChanged = 0;
+    }
+    
     //Allows Cloning of the class for resetting the game
     @Override
     public Board clone() {
