@@ -24,26 +24,26 @@ public class Assets {
     public Assets() {
 
         images = new ArrayList<>();
-        images.add(new Assets("src/assets/icons/clover4_icon.png", "clover4"));
-        images.add(new Assets("src/assets/icons/dice1_icon.png", "dice1"));
-        images.add(new Assets("src/assets/icons/dice2_icon.png", "dice2"));
-        images.add(new Assets("src/assets/icons/dice3_icon.png", "dice3"));
-        images.add(new Assets("src/assets/icons/dice4_icon.png", "dice4"));
-        images.add(new Assets("src/assets/icons/dice5_icon.png", "dice5"));
-        images.add(new Assets("src/assets/icons/dice6_icon.png", "dice6"));
-        images.add(new Assets("src/assets/icons/exchange_pawns_icon.png", "exchange_pawns"));
-        images.add(new Assets("src/assets/icons/explosion_icon.png", "explosion"));
-        images.add(new Assets("src/assets/icons/gravity_reversal_icon.png", "gravity_reversal"));
-        images.add(new Assets("src/assets/icons/love_icon.png", "love"));
-        images.add(new Assets("src/assets/icons/pawn_blue_icon.png", "pawn_blue"));
-        images.add(new Assets("src/assets/icons/pawn_green_icon.png", "pawn_green"));
-        images.add(new Assets("src/assets/icons/pawn_magenta_icon.png", "pawn_magenta"));
-        images.add(new Assets("src/assets/icons/pawn_red_icon - Copy.png", "pawn_red"));
-        images.add(new Assets("src/assets/icons/rethrow_dice_icon.png", "rethrow_dice"));
-        images.add(new Assets("src/assets/icons/reverse_cancel_icon.png", "reverse_cancel"));
-        images.add(new Assets("src/assets/icons/reverse_icon.png", "reverse"));
-        images.add(new Assets("src/assets/icons/turtle_cancel_icon.png", "turtle_cancel"));
-        images.add(new Assets("src/assets/icons/turtle_icon.png", "turtle"));
+        images.add(new Assets("/assets/icons/clover4_icon.png", "clover4"));
+        images.add(new Assets("/assets/icons/dice1_icon.png", "dice1"));
+        images.add(new Assets("/assets/icons/dice2_icon.png", "dice2"));
+        images.add(new Assets("/assets/icons/dice3_icon.png", "dice3"));
+        images.add(new Assets("/assets/icons/dice4_icon.png", "dice4"));
+        images.add(new Assets("/assets/icons/dice5_icon.png", "dice5"));
+        images.add(new Assets("/assets/icons/dice6_icon.png", "dice6"));
+        images.add(new Assets("/assets/icons/exchange_pawns_icon.png", "exchange_pawns"));
+        images.add(new Assets("/assets/icons/explosion_icon.png", "explosion"));
+        images.add(new Assets("/assets/icons/gravity_reversal_icon.png", "gravity_reversal"));
+        images.add(new Assets("/assets/icons/love_icon.png", "love"));
+        images.add(new Assets("/assets/icons/pawn_blue_icon.png", "pawn_blue"));
+        images.add(new Assets("/assets/icons/pawn_green_icon.png", "pawn_green"));
+        images.add(new Assets("/assets/icons/pawn_magenta_icon.png", "pawn_magenta"));
+        images.add(new Assets("/assets/icons/pawn_red_icon - Copy.png", "pawn_red"));
+        images.add(new Assets("/assets/icons/rethrow_dice_icon.png", "rethrow_dice"));
+        images.add(new Assets("/assets/icons/reverse_cancel_icon.png", "reverse_cancel"));
+        images.add(new Assets("/assets/icons/reverse_icon.png", "reverse"));
+        images.add(new Assets("/assets/icons/turtle_cancel_icon.png", "turtle_cancel"));
+        images.add(new Assets("/assets/icons/turtle_icon.png", "turtle"));
 
     }
 
@@ -62,8 +62,7 @@ public class Assets {
         
         for (int i = 0; i < images.size(); i++) {
             if(images.get(i).name.equals(name)) {
-//                tempURL = getClass().getResource(images.get(i).iconPath);
-                resizedImage = new ImageIcon(images.get(i).iconPath);
+                resizedImage = new ImageIcon(getClass().getResource(images.get(i).iconPath));
                 break;
             }
         }
