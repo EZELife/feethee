@@ -88,8 +88,7 @@ public class Board extends JPanel implements Cloneable {
     private boolean rebuild; //Used to rebuild Board in case of failure
     private Random random;
     private Square[] boardSquares;
-    private Player player1;
-    private Player player2;
+    private Player player1, player2;
     private Assets assets;
     private int gridPosCounter;
    // private Square[] square = new Square[100];

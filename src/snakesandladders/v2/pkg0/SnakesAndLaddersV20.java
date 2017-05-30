@@ -60,11 +60,10 @@ public class SnakesAndLaddersV20 extends JFrame {
     private static void createAndShowGUI() {
         SnakesAndLaddersV20 snakesAndLadders = new SnakesAndLaddersV20();
     }
-    
+
     //Replacement for clone maybe?
     public int timesGravityHasChanged = 0;
-    
-    
+
     //Fields
     SnakesAndLaddersV20 snl = this; //Used in action listeners since the class cannot be accessed directly
     //Swing=====================================================================
@@ -159,9 +158,12 @@ public class SnakesAndLaddersV20 extends JFrame {
                 midPane.setVisible(true);
                 rightPane.setVisible(true);
                 midPane.add(placeholder);
+                placeholder.add(boardPanel); //soc code
+                placeholder.add(board); //soc code
                 break;
             case NONE:
                 midPane.removeAll();
+                placeholder.removeAll();
                 leftPane.setVisible(false);
                 startScreen.setVisible(false);
                 midPane.setVisible(false);
@@ -201,7 +203,7 @@ public class SnakesAndLaddersV20 extends JFrame {
     private void updateGUI() {
         board.updateSquares(); //soc code
         board.updatePlayers(players[0].getSquare().getNumber(), players[1].getSquare().getNumber()); //soc code
-        
+
         for (int i = 0; i < 2; i++) {
             playerPanes[i].updatePosition(players[i].getSquare().getNumber());
         }
@@ -212,7 +214,7 @@ public class SnakesAndLaddersV20 extends JFrame {
     //Lazy and unreliable method should be replaced/removed
     //It doesn't work no idea why <BUG>
     private void highlightPlayer(Player player) {
-        if(player == players[0]){
+        if (player == players[0]) {
             playerPanes[0].boldenName();
             playerPanes[1].unBoldenName();
         } else {
@@ -261,9 +263,9 @@ public class SnakesAndLaddersV20 extends JFrame {
         currentPlayer.advance(result, board);
         history.append(currentPlayer.getName() + " moves to square " + currentPlayer.getSquare().getNumber());
         updateGUI();
-        
+
         currentPlayer.getSquare().applyEffect(currentPlayer, getOtherPlayer(), board, snl);
-                
+
         updateGUI();
     }
 
@@ -591,7 +593,7 @@ public class SnakesAndLaddersV20 extends JFrame {
                     board = new Board(Difficulty.HARD);
                     break;
             }
-            
+
             players[0] = new Player(board.getBoardSquare(1), playerName, playerColor);
             players[0].setColor(playerColor);//soc code
             players[1] = new Player(board.getBoardSquare(1), "Computer", COMColor);
@@ -599,13 +601,11 @@ public class SnakesAndLaddersV20 extends JFrame {
             board.setPlayers(players[0], players[1]);
             currentPlayer = players[random.nextInt(2)]; //Select a random player to go first
             highlightPlayer(currentPlayer);
-            
+
             //Used to reset any effects that have affected the board(Gravity Reversal)
             boardCopy = board.clone();
 
             boardPanel = new BoardPanel(board); //soc code
-            placeholder.add(boardPanel); //soc code
-            placeholder.add(board); //soc code
 
             //=========
             history.append("Game is Starting");
@@ -639,13 +639,13 @@ public class SnakesAndLaddersV20 extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            
+
             endGameCondition = false;
 
             rollButton.setSelected(false);
             rollButton.setEnabled(true);
             history.reset();
-            
+
             board.reset(snl);
 //            board = boardCopy.clone();
             for (Player player : players) {
