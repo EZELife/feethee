@@ -23,6 +23,10 @@ public class SnakeTimer extends JTextField {
     private int sec =0, min =0, hour=0;
     
     //Constructors
+
+    /**
+     *
+     */
     public SnakeTimer() {
         setBackground(Color.decode("#e0e0e0"));
         
@@ -59,6 +63,10 @@ public class SnakeTimer extends JTextField {
     }
     
     //Methods
+
+    /**
+     *
+     */
     public void reset() {
         timerString = "00:00:00";
         repaint();

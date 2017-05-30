@@ -29,42 +29,11 @@ import snakesandladders.v2.pkg0.Logic.Squares.TurtleSquare;
 import snakesandladders.v2.pkg0.SnakesAndLaddersV20;
 
 /**
+ * The playing board. Includes 100 squares of varying types
  *
  * @author Zac
  */
 public class Board extends JPanel implements Cloneable {
-
-    //Cloning replacement maybe
-    public void reset(SnakesAndLaddersV20 snl){
-        if(snl.timesGravityHasChanged%2!=0){
-            System.out.println("mpeeka");
-//            for(Square i: boardSquares){
-//                if(i instanceof GravityReversalSquare){
-//                    i.applyEffect(null, null, this, snl);
-//                }
-//            }
-            Square temp = new GravityReversalSquare(1000);
-            temp.applyEffect(null, null, this, snl);
-        }
-        snl.timesGravityHasChanged = 0;
-    }
-    
-    //Allows Cloning of the class for resetting the game
-    @Override
-    public Board clone() {
-        try {
-            final Board result = (Board) super.clone();
-            result.boardSquares = boardSquares.clone();
-            return result;
-        } catch (final CloneNotSupportedException ex) {
-            throw new AssertionError();
-        }
-    }
-
-    //Enum
-    public enum Difficulty {
-        EASY, NORMAL, HARD, DEBUG
-    }
 
     private enum SpecialSquareType {
         SNAKE,
@@ -91,9 +60,38 @@ public class Board extends JPanel implements Cloneable {
     private Player player1, player2;
     private Assets assets;
     private int gridPosCounter;
-   // private Square[] square = new Square[100];
+    // private Square[] square = new Square[100];
+
+    //Enum
+    /**
+     *Used to determine what kind of squares will be used in building the board
+     */
+    public static enum Difficulty {
+
+        /**
+         *Easy difficulty
+         */
+        EASY,
+        /**
+         *Normal difficulty
+         */
+        NORMAL,
+        /**
+         *Hard difficulty
+         */
+        HARD,
+        /**
+         *Used for debugging
+         */
+        DEBUG
+    }
 
     //Constructors
+    /**
+     *Creates 101 squares(square[0] is null), calls buildsBoard to build the 
+     * board
+     * @param difficulty
+     */
     public Board(Difficulty difficulty) {
         this.setOpaque(false); //soc code
         //Init
@@ -104,10 +102,9 @@ public class Board extends JPanel implements Cloneable {
 
         //Logic
         //buildBoard(difficulty);
-
         //DEBUGGING
-        buildBoard(Difficulty.DEBUG);
-        printBoard();
+        buildBoard(difficulty);
+//        printBoard();
         //buildBoard2(100);
         setPreferredSize(new Dimension(600, 600));
 
@@ -134,6 +131,10 @@ public class Board extends JPanel implements Cloneable {
         }
         this.revalidate();
     }
+
+    /**
+     *
+     */
     public void updateSquares() {
         int i = 1;
         for (Square temp : boardSquares) { //reads the square list and adds propper icons
@@ -166,18 +167,31 @@ public class Board extends JPanel implements Cloneable {
         }
     }
 
+    /**
+     *
+     * @param i
+     * @param j
+     */
     public void updatePlayers(int i, int j) { //can be made to increase size based on label[] width/height
         boardSquares[i].add(player1);
         boardSquares[j].add(player2);
         repaint();
     }
 
+    /**
+     *
+     * @param player1
+     * @param player2
+     */
     public void setPlayers(Player player1, Player player2) {
         this.player1 = player1;
         this.player2 = player2;
     }
 
     //Methods
+    /**
+     * Sets start, end square and initializes all other squares as default
+     */
     private void initializeBoard() {
         for (int i = 1; i <= 100; i++) {
             boardSquares[i] = new DefaultSquare(i);
@@ -185,7 +199,12 @@ public class Board extends JPanel implements Cloneable {
         boardSquares[1] = new StartSquare();
         boardSquares[100] = new EndSquare();
     }
-
+    
+    /**
+     * Builds board depending on difficulty given
+     * Rebuilds board if rebuild is true
+     * @param difficulty 
+     */
     private void buildBoard(Difficulty difficulty) {
 
         rebuild = false;
@@ -249,7 +268,12 @@ public class Board extends JPanel implements Cloneable {
         }
 
     }
-
+    
+    /**
+     * Builds and places special squares in free spots
+     * @param type
+     * @param number 
+     */
     private void buildSpecialSquare(SpecialSquareType type, int number) {
 
         int dest, counter, randomNum, ceiling, floor;
@@ -355,16 +379,13 @@ public class Board extends JPanel implements Cloneable {
         }
 
     }
-
+    
+    /**
+     * Checks and returns true if a special square can be built on square given
+     * @param number
+     * @return 
+     */
     private boolean isFree(int number) {
-
-        //This code doesn't work 100% reliably not sure why <BUG>
-//        for (int i = Math.max(number - specialSquareDensity, 2);
-//                i <= Math.min(number + specialSquareDensity, 99); i++) {
-//            if (!(boardSquares[i] instanceof DefaultSquare)) {
-//                return false;
-//            }
-//        }
 
         if (boardSquares[number] instanceof DefaultSquare && !((DefaultSquare) boardSquares[number]).isOccupied()) {
             return true;
@@ -372,92 +393,128 @@ public class Board extends JPanel implements Cloneable {
         return false;
 
     }
+
+    /**
+     *Resets board
+     * @param snl
+     */
+    public void reset(SnakesAndLaddersV20 snl) {
+        if (snl.timesGravityHasChanged % 2 != 0) {
+            Square temp = new GravityReversalSquare(1000);
+            temp.applyEffect(null, null, this, snl);
+        }
+        snl.timesGravityHasChanged = 0;
+    }
+
     //GetterSetters
+    /**
+     *Returns boardSquares
+     * @return
+     */
     public Square[] getBoardSquares() {
         return boardSquares;
     }
 
+    /**
+     *
+     * @param boardSquares
+     */
     public void setBoardSquares(Square[] boardSquares) {
         this.boardSquares = boardSquares;
     }
 
+    /**
+     *Returns square specified from boardSquares
+     * @param num
+     * @return
+     */
     public Square getBoardSquare(int num) {
         return boardSquares[num];
     }
 
+    /**
+     *
+     * @param num
+     * @param square
+     */
     public void setBoardSquare(int num, Square square) {
         boardSquares[num] = square;
         repaint();
         revalidate();
     }
 
-    //DEBUGGING
-    public void printBoard() {
-        for (Square temp : boardSquares) {
-            if (temp == null) {
-                continue;
-            }
-
-            if (temp instanceof SnakeSquare) {
-                System.out.println(temp.getNumber() + ": Snake | " + temp.getNumber() + " - " + ((SnakeSquare) temp).getDest().getNumber());
-            } else if (temp instanceof LadderSquare) {
-                System.out.println(temp.getNumber() + ": Ladder | " + temp.getNumber() + " - " + ((LadderSquare) temp).getDest().getNumber());
-            } else if (temp instanceof ExplosionSquare) {
-                System.out.println(temp.getNumber() + ": Explosion");
-            } else if (temp instanceof LoveSquare) {
-                System.out.println(temp.getNumber() + ": Love");
-            } else if (temp instanceof ExchangePawnsSquare) {
-                System.out.println(temp.getNumber() + ": ExchangePawns");
-            } else if (temp instanceof RethrowDiceSquare) {
-                System.out.println(temp.getNumber() + ": RethrowDice");
-            } else if (temp instanceof LuckySquare) {
-                System.out.println(temp.getNumber() + ": Lucky");
-            } else if (temp instanceof GravityReversalSquare) {
-                System.out.println(temp.getNumber() + ": GRAVREVERSE");
-            } else if (temp instanceof ReverseSquare) {
-                System.out.println(temp.getNumber() + ": Reverse");
-            } else if (temp instanceof TurtleSquare) {
-                System.out.println(temp.getNumber() + ": Turtle");
-            } else if (temp instanceof CancelTurtleSquare) {
-                System.out.println(temp.getNumber() + ": CancelTurtle");
-            } else if (temp instanceof CancelReverseSquare) {
-                System.out.println(temp.getNumber() + ": CancelReverse");
-            } else if (temp instanceof StartSquare) {
-                System.out.println(temp.getNumber() + ": StartSquare");
-            } else if (temp instanceof EndSquare) {
-                System.out.println(temp.getNumber() + ": EndSquare");
-            }
-        }
-    }
-
-    public void printBoard2() {
-
-        int sn, la;
-        sn = la = 0;
-
-        for (Square temp : boardSquares) {
-            if (temp == null) {
-                continue;
-            }
-
-            if (temp instanceof SnakeSquare) {
-                sn++;
-            } else if (temp instanceof LadderSquare) {
-                la++;
-            }
-        }
-        System.out.println("SNAKES\t" + sn + "\tLADDERS\t" + la);
-    }
-
-    private void buildBoard2(int x) {
-        for (int i = 0; i < x; i++) {
-            buildBoard(Difficulty.DEBUG);
-            printBoard2();
-        }
-    }
+//    //DEBUGGING
+//    /**
+//     *
+//     */
+//    public void printBoard() {
+//        for (Square temp : boardSquares) {
+//            if (temp == null) {
+//                continue;
+//            }
+//
+//            if (temp instanceof SnakeSquare) {
+//                System.out.println(temp.getNumber() + ": Snake | " + temp.getNumber() + " - " + ((SnakeSquare) temp).getDest().getNumber());
+//            } else if (temp instanceof LadderSquare) {
+//                System.out.println(temp.getNumber() + ": Ladder | " + temp.getNumber() + " - " + ((LadderSquare) temp).getDest().getNumber());
+//            } else if (temp instanceof ExplosionSquare) {
+//                System.out.println(temp.getNumber() + ": Explosion");
+//            } else if (temp instanceof LoveSquare) {
+//                System.out.println(temp.getNumber() + ": Love");
+//            } else if (temp instanceof ExchangePawnsSquare) {
+//                System.out.println(temp.getNumber() + ": ExchangePawns");
+//            } else if (temp instanceof RethrowDiceSquare) {
+//                System.out.println(temp.getNumber() + ": RethrowDice");
+//            } else if (temp instanceof LuckySquare) {
+//                System.out.println(temp.getNumber() + ": Lucky");
+//            } else if (temp instanceof GravityReversalSquare) {
+//                System.out.println(temp.getNumber() + ": GRAVREVERSE");
+//            } else if (temp instanceof ReverseSquare) {
+//                System.out.println(temp.getNumber() + ": Reverse");
+//            } else if (temp instanceof TurtleSquare) {
+//                System.out.println(temp.getNumber() + ": Turtle");
+//            } else if (temp instanceof CancelTurtleSquare) {
+//                System.out.println(temp.getNumber() + ": CancelTurtle");
+//            } else if (temp instanceof CancelReverseSquare) {
+//                System.out.println(temp.getNumber() + ": CancelReverse");
+//            } else if (temp instanceof StartSquare) {
+//                System.out.println(temp.getNumber() + ": StartSquare");
+//            } else if (temp instanceof EndSquare) {
+//                System.out.println(temp.getNumber() + ": EndSquare");
+//            }
+//        }
+//    }
+//
+//    /**
+//     *
+//     */
+//    public void printBoard2() {
+//
+//        int sn, la;
+//        sn = la = 0;
+//
+//        for (Square temp : boardSquares) {
+//            if (temp == null) {
+//                continue;
+//            }
+//
+//            if (temp instanceof SnakeSquare) {
+//                sn++;
+//            } else if (temp instanceof LadderSquare) {
+//                la++;
+//            }
+//        }
+//        System.out.println("SNAKES\t" + sn + "\tLADDERS\t" + la);
+//    }
+//
+//    private void buildBoard2(int x) {
+//        for (int i = 0; i < x; i++) {
+//            buildBoard(Difficulty.DEBUG);
+//            printBoard2();
+//        }
+//    }
 
 //    public static void main(String[] args) {
 //        Board board = new Board(Difficulty.DEBUG, player1, player2);
 //    }
-
 }
