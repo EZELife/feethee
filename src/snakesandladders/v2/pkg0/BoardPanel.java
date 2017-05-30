@@ -10,6 +10,10 @@ import snakesandladders.v2.pkg0.Logic.Squares.LadderSquare;
 import snakesandladders.v2.pkg0.Logic.Squares.SnakeSquare;
 import snakesandladders.v2.pkg0.Logic.Squares.Square;
 
+/**
+ *
+ * @author Zac
+ */
 public class BoardPanel extends JPanel {
 
     
@@ -17,6 +21,10 @@ public class BoardPanel extends JPanel {
     private LadderDrawingManualPanel ladder;
     private Board board;
 
+    /**
+     *
+     * @param board
+     */
     public BoardPanel(Board board) {
         setOpaque(false);
         snake = new Snake();

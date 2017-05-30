@@ -15,10 +15,22 @@ import snakesandladders.v2.pkg0.SnakesAndLaddersV20;
  */
 public class ReverseSquare extends Square {
 
+    /**
+     *
+     * @param number
+     */
     public ReverseSquare(int number) {
         super(number);
     }
 
+    /**
+     *Sets player1's reverse boolean true.
+     * player1's movements are reversed
+     * @param player1
+     * @param player2
+     * @param board
+     * @param snl
+     */
     @Override
     public void applyEffect(Player player1, Player player2, Board board, SnakesAndLaddersV20 snl) {
         if (!player1.isReverse()) {

@@ -15,10 +15,21 @@ import snakesandladders.v2.pkg0.SnakesAndLaddersV20;
  */
 public class ExplosionSquare extends Square {
 
+    /**
+     *{@inheritDoc}
+     * @param number
+     */
     public ExplosionSquare(int number) {
         super(number);
     }
 
+    /**
+     *Sets player's square to the first square
+     * @param player1
+     * @param player2
+     * @param board
+     * @param snl
+     */
     @Override
     public void applyEffect(Player player1, Player player2, Board board, SnakesAndLaddersV20 snl) {
         player1.setSquare(board.getBoardSquare(1));

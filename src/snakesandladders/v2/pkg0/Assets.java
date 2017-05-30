@@ -17,10 +17,22 @@ public class Assets {
 
     //Objects
     private ArrayList<Assets> images;
+
+    /**
+     *
+     */
     public String iconPath;
+
+    /**
+     *
+     */
     public String name;
 
     //Constructors
+
+    /**
+     *
+     */
     public Assets() {
 
         images = new ArrayList<>();
@@ -47,6 +59,11 @@ public class Assets {
 
     }
 
+    /**
+     *
+     * @param iconPath
+     * @param name
+     */
     public Assets(String iconPath, String name) {
 
         this.iconPath = iconPath;
@@ -55,6 +72,14 @@ public class Assets {
     }
     
     //Methods
+
+    /**
+     *
+     * @param name
+     * @param width
+     * @param height
+     * @return
+     */
     public ImageIcon getResizedIcon(String name, int width, int height) {
         
         ImageIcon resizedImage = null;

@@ -19,6 +19,10 @@ import javax.swing.border.Border;
 public class GUIDice extends JPanel {
 
     //Variables
+
+    /**
+     *
+     */
     public JLabel die;
     private ImageIcon[] dieImg;
     private Random random;
@@ -29,6 +33,10 @@ public class GUIDice extends JPanel {
     private Assets assets = new Assets();
 
     //Constructors
+
+    /**
+     *
+     */
     public GUIDice() {
         
         //Init
@@ -56,6 +64,11 @@ public class GUIDice extends JPanel {
     }
 
     //Methods
+
+    /**
+     *
+     * @param result
+     */
     public void playAnimation(int result) {
         timer = new Timer(100, new ActionListener() {
             private int randomNumber = random.nextInt(6)+1;
@@ -88,6 +101,9 @@ public class GUIDice extends JPanel {
         
     }
     
+    /**
+     *
+     */
     public void reset() {
         die.setIcon(dieImg[1]);
         repaint();

@@ -11,12 +11,20 @@ import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import javax.swing.JPanel;
 
-
+/**
+ *
+ * @author Zac
+ */
 public class LadderDrawingManualPanel extends JPanel {
 
     private Point2D point0; //= new Point2D.Double(100, 100);
     private Point2D point1; //= new Point2D.Double(500, 500);
 
+    /**
+     *
+     * @param point0
+     * @param point1
+     */
     public void setPoints(Point2D point0, Point2D point1) {
         this.point0 = point0;
         this.point1 = point1;
@@ -36,6 +44,12 @@ public class LadderDrawingManualPanel extends JPanel {
         drawLadderBetweenPoints(g, point0, point1);
     }
 
+    /**
+     *
+     * @param g
+     * @param p0
+     * @param p1
+     */
     public static void drawLadderBetweenPoints(
             Graphics2D g, Point2D p0, Point2D p1) {
         final double ladderWidth = 30; //was 40

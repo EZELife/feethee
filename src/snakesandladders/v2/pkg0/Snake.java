@@ -27,6 +27,11 @@ import javax.swing.JPanel;
 //    }
 //}
 
+/**
+ *
+ * @author Zac
+ */
+
 public class Snake {
 
     private Point2D point0 = new Point2D.Double(100, 500);

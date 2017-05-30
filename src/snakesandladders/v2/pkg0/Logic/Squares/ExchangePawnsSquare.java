@@ -15,10 +15,21 @@ import snakesandladders.v2.pkg0.SnakesAndLaddersV20;
  */
 public class ExchangePawnsSquare extends Square {
 
+    /**
+     *{@inheritDoc}
+     * @param number
+     */
     public ExchangePawnsSquare(int number) {
         super(number);
     }
 
+    /**
+     *Swaps the pawns position
+     * @param player1
+     * @param player2
+     * @param board
+     * @param snl
+     */
     @Override
     public void applyEffect(Player player1, Player player2, Board board, SnakesAndLaddersV20 snl) {
         Square temp = player1.getSquare();

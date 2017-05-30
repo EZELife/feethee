@@ -25,6 +25,12 @@ public class PlayerPanel extends JPanel {
     private Assets assets = new Assets();
     
     //Constructors
+
+    /**
+     *
+     * @param playerName
+     * @param playerColor
+     */
     public PlayerPanel(String playerName, String playerColor) {
         //setBackground(Color.decode("#e0e0e0"));
         
@@ -74,17 +80,30 @@ public class PlayerPanel extends JPanel {
     //Methods
     
     //Getter Setters
+
+    /**
+     *
+     * @param position
+     */
     public void updatePosition(int position) {
         positionText.setText("Position "+position);
         repaint();
     }
     
+    /**
+     *
+     * @param color
+     */
     public void updateColor(String color) {
         pawn.setIcon(assets.getResizedIcon(color, 60, 60));
         updateTextColor(color);
         repaint();
     }
     
+    /**
+     *
+     * @param name
+     */
     public void updateName(String name) {
         this.name = name;
         nameLabel.setText(name);
@@ -109,6 +128,9 @@ public class PlayerPanel extends JPanel {
         
     }
     
+    /**
+     *
+     */
     public void boldenName() {
 //        System.out.println("Boldening "+name);
 //        reAdd();
@@ -116,6 +138,9 @@ public class PlayerPanel extends JPanel {
         nameLabel.repaint();
     }
     
+    /**
+     *
+     */
     public void unBoldenName() {
 //        System.out.println("Unboldening "+name);
 //        reAdd();
@@ -125,10 +150,19 @@ public class PlayerPanel extends JPanel {
     
     //GetterSetters
 
+    /**
+     *
+     * @return
+     */
+
     public JLabel getNameLabelString() {
         return nameLabel;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setNameLabel(JLabel name) {
         this.nameLabel = name;
     }

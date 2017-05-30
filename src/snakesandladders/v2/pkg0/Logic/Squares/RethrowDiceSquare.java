@@ -15,10 +15,21 @@ import snakesandladders.v2.pkg0.SnakesAndLaddersV20;
  */
 public class RethrowDiceSquare extends Square {
 
+    /**
+     *{@inheritDoc}
+     * @param number
+     */
     public RethrowDiceSquare(int number) {
         super(number);
     }
 
+    /**
+     *Grants player1 another roll
+     * @param player1
+     * @param player2
+     * @param board
+     * @param snl
+     */
     @Override
     public void applyEffect(Player player1, Player player2, Board board, SnakesAndLaddersV20 snl) {
         

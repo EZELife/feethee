@@ -53,6 +53,10 @@ import snakesandladders.v2.pkg0.Logic.Player;
  */
 public class SnakesAndLaddersV20 extends JFrame {
 
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         SwingUtilities.invokeLater(SnakesAndLaddersV20::createAndShowGUI);
     }
@@ -62,6 +66,9 @@ public class SnakesAndLaddersV20 extends JFrame {
     }
 
     //Replacement for clone maybe?
+    /**
+     *
+     */
     public int timesGravityHasChanged = 0;
 
     //Fields
@@ -104,6 +111,9 @@ public class SnakesAndLaddersV20 extends JFrame {
     }
 
     //Constructors==============================================================
+    /**
+     *
+     */
     public SnakesAndLaddersV20() {
 
         random = new Random();
@@ -241,6 +251,10 @@ public class SnakesAndLaddersV20 extends JFrame {
         return COMColor;
     }
 
+    /**
+     *
+     * @return
+     */
     public int rollDie() {
         int result;
         result = random.nextInt(6) + 1;
@@ -258,6 +272,10 @@ public class SnakesAndLaddersV20 extends JFrame {
         return result;
     }
 
+    /**
+     *
+     * @param result
+     */
     public void movementAndEffects(int result) {
 
         currentPlayer.advance(result, board);
@@ -602,9 +620,6 @@ public class SnakesAndLaddersV20 extends JFrame {
             currentPlayer = players[random.nextInt(2)]; //Select a random player to go first
             highlightPlayer(currentPlayer);
 
-            //Used to reset any effects that have affected the board(Gravity Reversal)
-            boardCopy = board.clone();
-
             boardPanel = new BoardPanel(board); //soc code
 
             //=========
@@ -718,222 +733,442 @@ public class SnakesAndLaddersV20 extends JFrame {
     }
 
     //GetterSetters
+    /**
+     *
+     * @return
+     */
     public SnakesAndLaddersV20 getSnl() {
         return snl;
     }
 
+    /**
+     *
+     * @param snl
+     */
     public void setSnl(SnakesAndLaddersV20 snl) {
         this.snl = snl;
     }
 
+    /**
+     *
+     * @return
+     */
     public GridBagConstraints getGbc() {
         return gbc;
     }
 
+    /**
+     *
+     * @param gbc
+     */
     public void setGbc(GridBagConstraints gbc) {
         this.gbc = gbc;
     }
 
+    /**
+     *
+     * @return
+     */
     public Border getRedBorder() {
         return redBorder;
     }
 
+    /**
+     *
+     * @param redBorder
+     */
     public void setRedBorder(Border redBorder) {
         this.redBorder = redBorder;
     }
 
+    /**
+     *
+     * @param menuBar
+     */
     public void setMenuBar(JMenuBar menuBar) {
         this.menuBar = menuBar;
     }
 
+    /**
+     *
+     * @return
+     */
     public JPanel getLeftPane() {
         return leftPane;
     }
 
+    /**
+     *
+     * @param leftPane
+     */
     public void setLeftPane(JPanel leftPane) {
         this.leftPane = leftPane;
     }
 
+    /**
+     *
+     * @return
+     */
     public JPanel getMidPane() {
         return midPane;
     }
 
+    /**
+     *
+     * @param midPane
+     */
     public void setMidPane(JPanel midPane) {
         this.midPane = midPane;
     }
 
+    /**
+     *
+     * @return
+     */
     public JPanel getRightPane() {
         return rightPane;
     }
 
+    /**
+     *
+     * @param rightPane
+     */
     public void setRightPane(JPanel rightPane) {
         this.rightPane = rightPane;
     }
 
+    /**
+     *
+     * @return
+     */
     public JPanel getStartScreen() {
         return startScreen;
     }
 
+    /**
+     *
+     * @param startScreen
+     */
     public void setStartScreen(JPanel startScreen) {
         this.startScreen = startScreen;
     }
 
+    /**
+     *
+     * @return
+     */
     public JTextArea getHistoryTArea() {
         return historyTArea;
     }
 
+    /**
+     *
+     * @param historyTArea
+     */
     public void setHistoryTArea(JTextArea historyTArea) {
         this.historyTArea = historyTArea;
     }
 
+    /**
+     *
+     * @return
+     */
     public JScrollPane getScrollPane() {
         return scrollPane;
     }
 
+    /**
+     *
+     * @param scrollPane
+     */
     public void setScrollPane(JScrollPane scrollPane) {
         this.scrollPane = scrollPane;
     }
 
+    /**
+     *
+     * @return
+     */
     public JToggleButton getRollButton() {
         return rollButton;
     }
 
+    /**
+     *
+     * @param rollButton
+     */
     public void setRollButton(JToggleButton rollButton) {
         this.rollButton = rollButton;
     }
 
+    /**
+     *
+     * @return
+     */
     public JFormattedTextField getNameField() {
         return nameField;
     }
 
+    /**
+     *
+     * @param nameField
+     */
     public void setNameField(JFormattedTextField nameField) {
         this.nameField = nameField;
     }
 
+    /**
+     *
+     * @return
+     */
     public ButtonGroup getToggleButtons() {
         return toggleButtons;
     }
 
+    /**
+     *
+     * @param toggleButtons
+     */
     public void setToggleButtons(ButtonGroup toggleButtons) {
         this.toggleButtons = toggleButtons;
     }
 
+    /**
+     *
+     * @return
+     */
     public ButtonGroup getRadioButtons() {
         return radioButtons;
     }
 
+    /**
+     *
+     * @param radioButtons
+     */
     public void setRadioButtons(ButtonGroup radioButtons) {
         this.radioButtons = radioButtons;
     }
 
+    /**
+     *
+     * @return
+     */
     public Assets getAssets() {
         return assets;
     }
 
+    /**
+     *
+     * @param assets
+     */
     public void setAssets(Assets assets) {
         this.assets = assets;
     }
 
+    /**
+     *
+     * @return
+     */
     public GUIDice getDie() {
         return die;
     }
 
+    /**
+     *
+     * @param die
+     */
     public void setDie(GUIDice die) {
         this.die = die;
     }
 
+    /**
+     *
+     * @return
+     */
     public SnakeTimer getTimerField() {
         return timerField;
     }
 
+    /**
+     *
+     * @param timerField
+     */
     public void setTimerField(SnakeTimer timerField) {
         this.timerField = timerField;
     }
 
+    /**
+     *
+     * @return
+     */
     public BoardPanel getBoardPanel() {
         return boardPanel;
     }
 
+    /**
+     *
+     * @param boardPanel
+     */
     public void setBoardPanel(BoardPanel boardPanel) {
         this.boardPanel = boardPanel;
     }
 
+    /**
+     *
+     * @return
+     */
     public Random getRandom() {
         return random;
     }
 
+    /**
+     *
+     * @param random
+     */
     public void setRandom(Random random) {
         this.random = random;
     }
 
+    /**
+     *
+     * @return
+     */
     public Board getBoard() {
         return board;
     }
 
+    /**
+     *
+     * @param board
+     */
     public void setBoard(Board board) {
         this.board = board;
     }
 
+    /**
+     *
+     * @return
+     */
     public Player[] getPlayers() {
         return players;
     }
 
+    /**
+     *
+     * @param players
+     */
     public void setPlayers(Player[] players) {
         this.players = players;
     }
 
+    /**
+     *
+     * @return
+     */
     public Player getCurrentPlayer() {
         return currentPlayer;
     }
 
+    /**
+     *
+     * @param currentPlayer
+     */
     public void setCurrentPlayer(Player currentPlayer) {
         this.currentPlayer = currentPlayer;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isEndTurnCondition() {
         return endTurnCondition;
     }
 
+    /**
+     *
+     * @param endTurnCondition
+     */
     public void setEndTurnCondition(boolean endTurnCondition) {
         this.endTurnCondition = endTurnCondition;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isEndGameCondition() {
         return endGameCondition;
     }
 
+    /**
+     *
+     * @param endGameCondition
+     */
     public void setEndGameCondition(boolean endGameCondition) {
         this.endGameCondition = endGameCondition;
     }
 
+    /**
+     *
+     * @return
+     */
     public JToggleButton[] getPawnButtons() {
         return pawnButtons;
     }
 
+    /**
+     *
+     * @param pawnButtons
+     */
     public void setPawnButtons(JToggleButton[] pawnButtons) {
         this.pawnButtons = pawnButtons;
     }
 
+    /**
+     *
+     * @return
+     */
     public JRadioButton[] getDiffButtons() {
         return diffButtons;
     }
 
+    /**
+     *
+     * @param diffButtons
+     */
     public void setDiffButtons(JRadioButton[] diffButtons) {
         this.diffButtons = diffButtons;
     }
 
+    /**
+     *
+     * @return
+     */
     public History getHistory() {
         return history;
     }
 
+    /**
+     *
+     * @param history
+     */
     public void setHistory(History history) {
         this.history = history;
     }
 
+    /**
+     *
+     * @return
+     */
     public Board getBoardCopy() {
         return boardCopy;
     }
 
+    /**
+     *
+     * @param boardCopy
+     */
     public void setBoardCopy(Board boardCopy) {
         this.boardCopy = boardCopy;
     }
