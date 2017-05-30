@@ -8,7 +8,7 @@ package snakesandladders.v2.pkg0.Logic.Squares;
 import snakesandladders.v2.pkg0.Logic.Board;
 import snakesandladders.v2.pkg0.Logic.Player;
 import snakesandladders.v2.pkg0.SnakesAndLaddersV20;
-
+import snakesandladders.v2.pkg0.Assets;
 /**
  *
  * @author Zac
@@ -19,8 +19,10 @@ public class ReverseSquare extends Square {
      *
      * @param number
      */
+    Assets assets = new Assets();
     public ReverseSquare(int number) {
         super(number);
+        setIcon(assets.getResizedIcon("reverse", 35, 40));
     }
 
     /**

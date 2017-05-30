@@ -134,41 +134,6 @@ public class Board extends JPanel implements Cloneable {
 
     /**
      *
-     */
-    public void updateSquares() {
-        int i = 1;
-        for (Square temp : boardSquares) { //reads the square list and adds propper icons
-
-            if (temp == null) {
-                continue;
-            }
-            if (temp instanceof ExplosionSquare) {
-                boardSquares[i].setIcon(assets.getResizedIcon("explosion", 35, 40));
-            } else if (temp instanceof LoveSquare) {
-                boardSquares[i].setIcon(assets.getResizedIcon("love", 35, 40));
-            } else if (temp instanceof ExchangePawnsSquare) {
-                boardSquares[i].setIcon(assets.getResizedIcon("exchange_pawns", 35, 40));
-            } else if (temp instanceof RethrowDiceSquare) {
-                boardSquares[i].setIcon(assets.getResizedIcon("rethrow_dice", 35, 40));
-            } else if (temp instanceof LuckySquare) {
-                boardSquares[i].setIcon(assets.getResizedIcon("clover4", 35, 40));
-            } else if (temp instanceof GravityReversalSquare) {
-                boardSquares[i].setIcon(assets.getResizedIcon("gravity_reversal", 35, 40));
-            } else if (temp instanceof ReverseSquare) {
-                boardSquares[i].setIcon(assets.getResizedIcon("reverse", 35, 40));
-            } else if (temp instanceof TurtleSquare) {
-                boardSquares[i].setIcon(assets.getResizedIcon("turtle", 35, 40));
-            } else if (temp instanceof CancelTurtleSquare) {
-                boardSquares[i].setIcon(assets.getResizedIcon("turtle_cancel", 35, 40));
-            } else if (temp instanceof CancelReverseSquare) {
-                boardSquares[i].setIcon(assets.getResizedIcon("reverse_cancel", 35, 40));
-            }
-            i++;
-        }
-    }
-
-    /**
-     *
      * @param i
      * @param j
      */
