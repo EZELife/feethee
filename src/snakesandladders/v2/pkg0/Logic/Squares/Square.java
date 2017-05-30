@@ -27,7 +27,8 @@ public abstract class Square extends JLabel {
     //Constructors
 
     /**
-     *Creates a square with the number given
+     *Creates a square with the number given, adds the background color
+     * and the text of the square.
      * @param number
      */
     public Square(int number) {

@@ -16,19 +16,8 @@ import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
 import javax.swing.JPanel;
 
-//public class SnakeDrawing {
-//
-//    public static void main(String[] args) {
-//        SwingUtilities.invokeLater(() -> createAndShowGUI());
-//    }
-//
-//    private static void createAndShowGUI() {
-//
-//    }
-//}
-
 /**
- *
+ * 
  * @author Zac
  */
 

@@ -21,7 +21,7 @@ public class LadderDrawingManualPanel extends JPanel {
     private Point2D point1; //= new Point2D.Double(500, 500);
 
     /**
-     *
+     * Sets the 2 points to draw the ladder.
      * @param point0
      * @param point1
      */
@@ -45,7 +45,8 @@ public class LadderDrawingManualPanel extends JPanel {
     }
 
     /**
-     *
+     * Draws the line between the 2 points set by
+     * setPoints().
      * @param g
      * @param p0
      * @param p1

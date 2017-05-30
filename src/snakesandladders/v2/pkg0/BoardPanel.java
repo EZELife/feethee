@@ -11,7 +11,8 @@ import snakesandladders.v2.pkg0.Logic.Squares.SnakeSquare;
 import snakesandladders.v2.pkg0.Logic.Squares.Square;
 
 /**
- *
+ * The panel that is used to draw the
+ * snakes and the ladders.
  * @author Zac
  */
 public class BoardPanel extends JPanel {
@@ -22,7 +23,8 @@ public class BoardPanel extends JPanel {
     private Board board;
 
     /**
-     *
+     * Constructor, gets and creates a reference of the
+     * board.
      * @param board
      */
     public BoardPanel(Board board) {
