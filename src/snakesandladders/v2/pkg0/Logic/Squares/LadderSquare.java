@@ -8,7 +8,6 @@ package snakesandladders.v2.pkg0.Logic.Squares;
 import snakesandladders.v2.pkg0.Logic.Board;
 import snakesandladders.v2.pkg0.Logic.Player;
 import snakesandladders.v2.pkg0.SnakesAndLaddersV20;
-import snakesandladders.v2.pkg0.Assets;
 /**
  *
  * @author Zac
@@ -23,11 +22,9 @@ public class LadderSquare extends Square {
      * @param number
      * @param dest
      */
-    Assets assets = new Assets();
     public LadderSquare(int number, Square dest) {
         super(number);
         this.dest = dest;
-        setIcon(assets.getResizedIcon("explosion", 35, 40));
     }
 
     /**
