@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package snakesandladders.v2.pkg0.Logic.Squares;
+package snakesandladders.Squares;
 
 import java.awt.Color;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
-import snakesandladders.v2.pkg0.Logic.Board;
-import snakesandladders.v2.pkg0.Logic.Player;
-import snakesandladders.v2.pkg0.SnakesAndLaddersV20;
+import snakesandladders.main.Board;
+import snakesandladders.main.Player;
+import snakesandladders.main.SnakesAndLaddersV20;
 
 /**
  *Abstract class extended by all the types of squares of the board

@@ -3,29 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package snakesandladders.v2.pkg0.Logic;
+package snakesandladders.main;
 
 import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.Random;
 import javax.swing.JPanel;
-import snakesandladders.v2.pkg0.Logic.Squares.CancelReverseSquare;
-import snakesandladders.v2.pkg0.Logic.Squares.CancelTurtleSquare;
-import snakesandladders.v2.pkg0.Logic.Squares.DefaultSquare;
-import snakesandladders.v2.pkg0.Logic.Squares.EndSquare;
-import snakesandladders.v2.pkg0.Logic.Squares.ExchangePawnsSquare;
-import snakesandladders.v2.pkg0.Logic.Squares.ExplosionSquare;
-import snakesandladders.v2.pkg0.Logic.Squares.GravityReversalSquare;
-import snakesandladders.v2.pkg0.Logic.Squares.LadderSquare;
-import snakesandladders.v2.pkg0.Logic.Squares.LoveSquare;
-import snakesandladders.v2.pkg0.Logic.Squares.LuckySquare;
-import snakesandladders.v2.pkg0.Logic.Squares.RethrowDiceSquare;
-import snakesandladders.v2.pkg0.Logic.Squares.ReverseSquare;
-import snakesandladders.v2.pkg0.Logic.Squares.SnakeSquare;
-import snakesandladders.v2.pkg0.Logic.Squares.Square;
-import snakesandladders.v2.pkg0.Logic.Squares.StartSquare;
-import snakesandladders.v2.pkg0.Logic.Squares.TurtleSquare;
-import snakesandladders.v2.pkg0.SnakesAndLaddersV20;
+import snakesandladders.Squares.CancelReverseSquare;
+import snakesandladders.Squares.CancelTurtleSquare;
+import snakesandladders.Squares.DefaultSquare;
+import snakesandladders.Squares.EndSquare;
+import snakesandladders.Squares.ExchangePawnsSquare;
+import snakesandladders.Squares.ExplosionSquare;
+import snakesandladders.Squares.GravityReversalSquare;
+import snakesandladders.Squares.LadderSquare;
+import snakesandladders.Squares.LoveSquare;
+import snakesandladders.Squares.LuckySquare;
+import snakesandladders.Squares.RethrowDiceSquare;
+import snakesandladders.Squares.ReverseSquare;
+import snakesandladders.Squares.SnakeSquare;
+import snakesandladders.Squares.Square;
+import snakesandladders.Squares.StartSquare;
+import snakesandladders.Squares.TurtleSquare;
 
 /**
  * The playing board. Includes 100 squares of varying types

@@ -3,31 +3,30 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package snakesandladders.v2.pkg0.Logic.Squares;
+package snakesandladders.Squares;
 
-import snakesandladders.v2.pkg0.Logic.Board;
-import snakesandladders.v2.pkg0.Logic.Player;
-import snakesandladders.v2.pkg0.SnakesAndLaddersV20;
-import snakesandladders.v2.pkg0.Assets;
+import snakesandladders.main.Board;
+import snakesandladders.main.Player;
+import snakesandladders.main.SnakesAndLaddersV20;
+import snakesandladders.main.Assets;
 /**
  *
  * @author Zac
  */
-public class LuckySquare extends Square {
+public class RethrowDiceSquare extends Square {
 
     /**
      *{@inheritDoc}
      * @param number
      */
     Assets assets = new Assets();
-    public LuckySquare(int number) {
+    public RethrowDiceSquare(int number) {
         super(number);
-        setIcon(assets.getResizedIcon("clover4", 35, 40));
+        setIcon(assets.getResizedIcon("rethrow_dice", 35, 40));
     }
 
     /**
-     *Grants player1 another roll and sets the lucky boolean to true so that in
-     * case player1 rolls a 6, he wins
+     *Grants player1 another roll
      * @param player1
      * @param player2
      * @param board
@@ -36,9 +35,8 @@ public class LuckySquare extends Square {
     @Override
     public void applyEffect(Player player1, Player player2, Board board, SnakesAndLaddersV20 snl) {
         
-        snl.getHistory().append(player1.getName()+" stepped on a lucky square");
+        snl.getHistory().append(player1.getName()+" stepped on a rethrow dice square");
         
-        player1.setLucky(true);
         snl.getRollButton().setSelected(false);
         snl.getRollButton().setEnabled(true);
         snl.setEndTurnCondition(false);

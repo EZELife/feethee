@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package snakesandladders.v2.pkg0;
+package snakesandladders.main;
 
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
@@ -42,10 +42,7 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.PlainDocument;
-import snakesandladders.v2.pkg0.Logic.Board;
-import snakesandladders.v2.pkg0.Logic.Board.Difficulty;
-import snakesandladders.v2.pkg0.Logic.History;
-import snakesandladders.v2.pkg0.Logic.Player;
+import snakesandladders.main.Board.Difficulty;
 
 /**
  *
