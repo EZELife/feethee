@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package snakesandladders.v2.pkg0.Logic.Squares;
-
+import snakesandladders.v2.pkg0.Assets;
 import snakesandladders.v2.pkg0.Logic.Board;
 import snakesandladders.v2.pkg0.Logic.Player;
 import snakesandladders.v2.pkg0.SnakesAndLaddersV20;
@@ -19,8 +19,10 @@ public class ExchangePawnsSquare extends Square {
      *{@inheritDoc}
      * @param number
      */
+    Assets assets = new Assets();
     public ExchangePawnsSquare(int number) {
         super(number);
+        setIcon(assets.getResizedIcon("exchange_pawns", 35, 40));
     }
 
     /**

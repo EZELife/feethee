@@ -5,12 +5,11 @@
  */
 package snakesandladders.v2.pkg0.Logic.Squares;
 
-import java.awt.GridLayout;
 import java.util.ArrayList;
 import snakesandladders.v2.pkg0.Logic.Board;
 import snakesandladders.v2.pkg0.Logic.Player;
 import snakesandladders.v2.pkg0.SnakesAndLaddersV20;
-
+import snakesandladders.v2.pkg0.Assets;
 /**
  *
  * @author Zac
@@ -21,8 +20,10 @@ public class GravityReversalSquare extends Square {
      *{@inheritDoc}
      * @param number
      */
+    Assets assets = new Assets();
     public GravityReversalSquare(int number) {
         super(number);
+        setIcon(assets.getResizedIcon("gravity_reversal", 35, 40));
     }
 
     /**

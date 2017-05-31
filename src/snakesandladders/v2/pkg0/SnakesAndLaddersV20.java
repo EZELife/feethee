@@ -211,7 +211,6 @@ public class SnakesAndLaddersV20 extends JFrame {
     }
 
     private void updateGUI() {
-        board.updateSquares(); //soc code
         board.updatePlayers(players[0].getSquare().getNumber(), players[1].getSquare().getNumber()); //soc code
 
         for (int i = 0; i < 2; i++) {

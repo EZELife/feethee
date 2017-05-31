@@ -9,7 +9,6 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.util.Random;
 import javax.swing.JPanel;
-import snakesandladders.v2.pkg0.Assets;
 import snakesandladders.v2.pkg0.Logic.Squares.CancelReverseSquare;
 import snakesandladders.v2.pkg0.Logic.Squares.CancelTurtleSquare;
 import snakesandladders.v2.pkg0.Logic.Squares.DefaultSquare;
@@ -58,8 +57,6 @@ public class Board extends JPanel implements Cloneable {
     private Random random;
     private Square[] boardSquares;
     private Player player1, player2;
-    private Assets assets;
-    private int gridPosCounter;
     // private Square[] square = new Square[100];
 
     //Enum
@@ -95,7 +92,6 @@ public class Board extends JPanel implements Cloneable {
     public Board(Difficulty difficulty) {
         this.setOpaque(false); //soc code
         //Init
-        assets = new Assets();
         random = new Random();
         boardSquares = new Square[101];
         boardSquares[0] = null;
@@ -113,73 +109,36 @@ public class Board extends JPanel implements Cloneable {
         setLayout(new GridLayout(10, 10, 1, 1));
 
         for (int i = 0; i < 10; i++) { //add jlabels to jpanel in correct order
-            gridPosCounter = 0;
             int count1 = temp[(int) i / 2];
             int count2 = temp2[(int) i / 2];
             for (int j = 0; j < 10; j++) {
                 if (i % 2 == 0) {
                     add(boardSquares[count2--]);
-                    //boardSquares[count2--].setGridPos(gridPosCounter++);
                     revalidate();
                 } else {
                     add(boardSquares[count1++]);
-                    //boardSquares[count1++].setGridPos(gridPosCounter++);
                     revalidate();
                 }
-//                System.out.println("gridPosCounter = " + gridPosCounter);
             }
         }
         this.revalidate();
     }
 
     /**
-     *
-     */
-    public void updateSquares() {
-        int i = 1;
-        for (Square temp : boardSquares) { //reads the square list and adds propper icons
-
-            if (temp == null) {
-                continue;
-            }
-            if (temp instanceof ExplosionSquare) {
-                boardSquares[i].setIcon(assets.getResizedIcon("explosion", 35, 40));
-            } else if (temp instanceof LoveSquare) {
-                boardSquares[i].setIcon(assets.getResizedIcon("love", 35, 40));
-            } else if (temp instanceof ExchangePawnsSquare) {
-                boardSquares[i].setIcon(assets.getResizedIcon("exchange_pawns", 35, 40));
-            } else if (temp instanceof RethrowDiceSquare) {
-                boardSquares[i].setIcon(assets.getResizedIcon("rethrow_dice", 35, 40));
-            } else if (temp instanceof LuckySquare) {
-                boardSquares[i].setIcon(assets.getResizedIcon("clover4", 35, 40));
-            } else if (temp instanceof GravityReversalSquare) {
-                boardSquares[i].setIcon(assets.getResizedIcon("gravity_reversal", 35, 40));
-            } else if (temp instanceof ReverseSquare) {
-                boardSquares[i].setIcon(assets.getResizedIcon("reverse", 35, 40));
-            } else if (temp instanceof TurtleSquare) {
-                boardSquares[i].setIcon(assets.getResizedIcon("turtle", 35, 40));
-            } else if (temp instanceof CancelTurtleSquare) {
-                boardSquares[i].setIcon(assets.getResizedIcon("turtle_cancel", 35, 40));
-            } else if (temp instanceof CancelReverseSquare) {
-                boardSquares[i].setIcon(assets.getResizedIcon("reverse_cancel", 35, 40));
-            }
-            i++;
-        }
-    }
-
-    /**
-     *
+     * Gets the location of each player
+     * and updates their position on the board.
      * @param i
      * @param j
      */
-    public void updatePlayers(int i, int j) { //can be made to increase size based on label[] width/height
+    public void updatePlayers(int i, int j) {
         boardSquares[i].add(player1);
         boardSquares[j].add(player2);
         repaint();
     }
 
     /**
-     *
+     * Passes a reference of each player in order
+     * to be used by the updatePlayers function.
      * @param player1
      * @param player2
      */
