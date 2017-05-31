@@ -12,7 +12,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 /**
- *
+ *The timer of the game
  * @author Zac
  */
 public class SnakeTimer extends JTextField {
@@ -25,7 +25,7 @@ public class SnakeTimer extends JTextField {
     //Constructors
 
     /**
-     *
+     *Builds and starts a timer
      */
     public SnakeTimer() {
         setBackground(Color.decode("#e0e0e0"));
