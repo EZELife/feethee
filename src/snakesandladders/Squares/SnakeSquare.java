@@ -3,26 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package snakesandladders.v2.pkg0.Logic.Squares;
+package snakesandladders.Squares;
 
-import snakesandladders.v2.pkg0.Logic.Board;
-import snakesandladders.v2.pkg0.Logic.Player;
-import snakesandladders.v2.pkg0.SnakesAndLaddersV20;
+import snakesandladders.main.Board;
+import snakesandladders.main.Player;
+import snakesandladders.main.SnakesAndLaddersV20;
+
 /**
  *
  * @author Zac
  */
-public class LadderSquare extends Square {
+public class SnakeSquare extends Square {
 
     private Square dest;
 
     /**
      *{@inheritDoc}
-     * Also sets the destination(top of the ladder) as given
      * @param number
      * @param dest
      */
-    public LadderSquare(int number, Square dest) {
+    public SnakeSquare(int number, Square dest) {
         super(number);
         this.dest = dest;
     }
@@ -37,7 +37,7 @@ public class LadderSquare extends Square {
     @Override
     public void applyEffect(Player player1, Player player2, Board board, SnakesAndLaddersV20 snl) {
         player1.setSquare(dest);
-        snl.getHistory().append(player1.getName()+" stepped on a ladder\n"+player1.getName()+" has moved to square "+player1.getSquare().getNumber());
+        snl.getHistory().append(player1.getName()+" has stepped on a snake\n"+player1.getName()+" has moved to square "+player1.getSquare().getNumber());
     }
 
     /**

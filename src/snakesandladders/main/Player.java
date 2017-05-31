@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package snakesandladders.v2.pkg0.Logic;
+package snakesandladders.main;
 
 import javax.swing.JLabel;
-import snakesandladders.v2.pkg0.Assets;
-import snakesandladders.v2.pkg0.Logic.Squares.Square;
+import snakesandladders.Squares.Square;
 
 /**
  * The pawns used in the game. Has name, color, the square it's in and the

@@ -1,4 +1,4 @@
-package snakesandladders.v2.pkg0;
+package snakesandladders.main;
 
 import java.awt.BasicStroke;
 import java.awt.Color;

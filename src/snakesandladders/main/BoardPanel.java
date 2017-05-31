@@ -1,14 +1,13 @@
-package snakesandladders.v2.pkg0;
+package snakesandladders.main;
 
-import snakesandladders.v2.pkg0.Logic.*;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.geom.Point2D;
 import javax.swing.JPanel;
-import snakesandladders.v2.pkg0.Logic.Squares.LadderSquare;
-import snakesandladders.v2.pkg0.Logic.Squares.SnakeSquare;
-import snakesandladders.v2.pkg0.Logic.Squares.Square;
+import snakesandladders.Squares.LadderSquare;
+import snakesandladders.Squares.SnakeSquare;
+import snakesandladders.Squares.Square;
 
 /**
  * The panel that is used to draw the

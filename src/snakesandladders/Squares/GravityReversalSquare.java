@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package snakesandladders.v2.pkg0.Logic.Squares;
+package snakesandladders.Squares;
 
 import java.util.ArrayList;
-import snakesandladders.v2.pkg0.Logic.Board;
-import snakesandladders.v2.pkg0.Logic.Player;
-import snakesandladders.v2.pkg0.SnakesAndLaddersV20;
-import snakesandladders.v2.pkg0.Assets;
+import snakesandladders.main.Board;
+import snakesandladders.main.Player;
+import snakesandladders.main.SnakesAndLaddersV20;
+import snakesandladders.main.Assets;
 /**
  *
  * @author Zac

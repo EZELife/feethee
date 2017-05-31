@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package snakesandladders.v2.pkg0;
+package snakesandladders.main;
 
 import java.awt.*;
 import javax.swing.*;
