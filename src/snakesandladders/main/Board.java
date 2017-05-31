@@ -107,7 +107,7 @@ public class Board extends JPanel implements Cloneable {
         int[] temp2 = {100, 80, 60, 40, 20};
         setLayout(new GridLayout(10, 10, 1, 1));
 
-        for (int i = 0; i < 10; i++) { //add jlabels to jpanel in correct order
+        for (int i = 0; i < 10; i++) { //add squares to board in correct order
             int count1 = temp[(int) i / 2];
             int count2 = temp2[(int) i / 2];
             for (int j = 0; j < 10; j++) {

@@ -20,7 +20,6 @@ public abstract class Square extends JLabel {
 
     //Fields
     private int number;
-    private int gridPos = 0;
 
     private Color myColor = Color.decode("#43B7BA");
 
@@ -69,21 +68,5 @@ public abstract class Square extends JLabel {
      */
     public void setNumber(int number) {
         this.number = number;
-    }
-
-    /**
-     *
-     * @param gridPos
-     */
-    public void setGridPos(int gridPos) {
-        this.gridPos = gridPos;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getGridPos() {
-        return gridPos;
     }
 }

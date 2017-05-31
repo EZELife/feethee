@@ -18,7 +18,7 @@ public class BoardPanel extends JPanel {
 
     
     private Snake snake;
-    private LadderDrawingManualPanel ladder;
+    private Ladder ladder;
     private Board board;
 
     /**
@@ -29,7 +29,7 @@ public class BoardPanel extends JPanel {
     public BoardPanel(Board board) {
         setOpaque(false);
         snake = new Snake();
-        ladder = new LadderDrawingManualPanel();
+        ladder = new Ladder();
         this.board = board;
     }
 

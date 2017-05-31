@@ -15,7 +15,7 @@ import javax.swing.JPanel;
  *
  * @author Zac
  */
-public class LadderDrawingManualPanel extends JPanel {
+public class Ladder extends JPanel {
 
     private Point2D point0; //= new Point2D.Double(100, 100);
     private Point2D point1; //= new Point2D.Double(500, 500);
@@ -51,7 +51,7 @@ public class LadderDrawingManualPanel extends JPanel {
      * @param p0
      * @param p1
      */
-    public static void drawLadderBetweenPoints(
+    public static void drawLadderBetweenPoints( //must be static
             Graphics2D g, Point2D p0, Point2D p1) {
         final double ladderWidth = 30; //was 40
         final double distanceBetweenSteps = 30;
