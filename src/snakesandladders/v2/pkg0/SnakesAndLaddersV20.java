@@ -54,7 +54,7 @@ import snakesandladders.v2.pkg0.Logic.Player;
 public class SnakesAndLaddersV20 extends JFrame {
 
     /**
-     *
+     * Starts the game
      * @param args
      */
     public static void main(String[] args) {
@@ -91,7 +91,6 @@ public class SnakesAndLaddersV20 extends JFrame {
     private History history;
     private GUIDice die;
     private SnakeTimer timerField;
-//    private PlayerPanel playerPane1, playerPane2; //Should be an array
     private PlayerPanel[] playerPanes;
     private BoardPanel boardPanel;
     //==========================================================================
@@ -112,7 +111,7 @@ public class SnakesAndLaddersV20 extends JFrame {
 
     //Constructors==============================================================
     /**
-     *
+     *Calls functions to build GUI then shows start screen to start the game
      */
     public SnakesAndLaddersV20() {
 
@@ -251,7 +250,7 @@ public class SnakesAndLaddersV20 extends JFrame {
     }
 
     /**
-     *
+     *Calls playAnimation from GUIDice and waits until it's over
      * @return
      */
     public int rollDie() {
@@ -272,7 +271,7 @@ public class SnakesAndLaddersV20 extends JFrame {
     }
 
     /**
-     *
+     *Moves the player and applies effect calling the appropriate methods
      * @param result
      */
     public void movementAndEffects(int result) {
@@ -285,7 +284,7 @@ public class SnakesAndLaddersV20 extends JFrame {
 
         updateGUI();
     }
-
+    
     private void endTurn() {
         currentPlayer = getOtherPlayer();
         rollButton.setSelected(false);

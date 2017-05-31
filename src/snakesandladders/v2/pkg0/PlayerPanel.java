@@ -27,7 +27,8 @@ public class PlayerPanel extends JPanel {
     //Constructors
 
     /**
-     *
+     *Builds a GUI element containing the player's pawn image, player's name and
+     * player's position
      * @param playerName
      * @param playerColor
      */
@@ -82,7 +83,7 @@ public class PlayerPanel extends JPanel {
     //Getter Setters
 
     /**
-     *
+     *Update the position element with the int given
      * @param position
      */
     public void updatePosition(int position) {
@@ -91,7 +92,7 @@ public class PlayerPanel extends JPanel {
     }
     
     /**
-     *
+     *Updates player's pawn color
      * @param color
      */
     public void updateColor(String color) {
@@ -101,7 +102,7 @@ public class PlayerPanel extends JPanel {
     }
     
     /**
-     *
+     *Updates player's name element with string given
      * @param name
      */
     public void updateName(String name) {
@@ -129,7 +130,7 @@ public class PlayerPanel extends JPanel {
     }
     
     /**
-     *
+     *Underlines player's name
      */
     public void boldenName() {
 //        System.out.println("Boldening "+name);
@@ -139,7 +140,7 @@ public class PlayerPanel extends JPanel {
     }
     
     /**
-     *
+     *Un-underlines player's name
      */
     public void unBoldenName() {
 //        System.out.println("Unboldening "+name);

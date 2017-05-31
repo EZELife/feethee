@@ -13,7 +13,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 
 /**
- *
+ *Dice used 
  * @author Zac
  */
 public class GUIDice extends JPanel {
@@ -35,7 +35,7 @@ public class GUIDice extends JPanel {
     //Constructors
 
     /**
-     *
+     *Creates a GUI Dice
      */
     public GUIDice() {
         
@@ -66,7 +66,7 @@ public class GUIDice extends JPanel {
     //Methods
 
     /**
-     *
+     *Starts an animation that ends on the image corresponding to the int given
      * @param result
      */
     public void playAnimation(int result) {
@@ -102,12 +102,13 @@ public class GUIDice extends JPanel {
     }
     
     /**
-     *
+     *Sets die image to 1
      */
     public void reset() {
         die.setIcon(dieImg[1]);
         repaint();
     }
+    
 
     private int getVisible() {
         int i;
