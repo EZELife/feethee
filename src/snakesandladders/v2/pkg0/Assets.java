@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
- *
+ *Used for loading and resizing images used within the game
  * @author Zac
  */
 public class Assets {
@@ -31,7 +31,8 @@ public class Assets {
     //Constructors
 
     /**
-     *
+     *Loads all image paths and the strings that will need to be called to
+     * load them from another class
      */
     public Assets() {
 
@@ -60,7 +61,8 @@ public class Assets {
     }
 
     /**
-     *
+     *Loads an image path and a string that will need to be called to
+     * load the image from another class
      * @param iconPath
      * @param name
      */
@@ -74,7 +76,7 @@ public class Assets {
     //Methods
 
     /**
-     *
+     *Resizes and returns an icon
      * @param name
      * @param width
      * @param height
