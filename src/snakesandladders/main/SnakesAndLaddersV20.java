@@ -87,7 +87,7 @@ public class SnakesAndLaddersV20 extends JFrame {
     //My Classes================================================================
     private Assets assets = new Assets();
     private History history;
-    private GUIDice die;
+    private Die die;
     private SnakeTimer timerField;
     private PlayerPanel[] playerPanes;
     private BoardPanel boardPanel;
@@ -366,7 +366,7 @@ public class SnakesAndLaddersV20 extends JFrame {
         JPanel rightDownPane = new JPanel(new GridBagLayout());
         rollButton = new JToggleButton("Roll");
         JLabel timerLabel = new JLabel("TIMER");
-        die = new GUIDice();
+        die = new Die();
         timerField = new SnakeTimer();
         playerPanes = new PlayerPanel[2];
         playerPanes[0] = new PlayerPanel("Player", "pawn_blue");
@@ -955,7 +955,7 @@ public class SnakesAndLaddersV20 extends JFrame {
      *
      * @return
      */
-    public GUIDice getDie() {
+    public Die getDie() {
         return die;
     }
 
@@ -963,7 +963,7 @@ public class SnakesAndLaddersV20 extends JFrame {
      *
      * @param die
      */
-    public void setDie(GUIDice die) {
+    public void setDie(Die die) {
         this.die = die;
     }
 
