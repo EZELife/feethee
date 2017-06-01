@@ -52,6 +52,7 @@ public class SnakesAndLaddersV20 extends JFrame {
 
     /**
      * Starts the game
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -108,7 +109,7 @@ public class SnakesAndLaddersV20 extends JFrame {
 
     //Constructors==============================================================
     /**
-     *Calls functions to build GUI then shows start screen to start the game
+     * Calls functions to build GUI then shows start screen to start the game
      */
     public SnakesAndLaddersV20() {
 
@@ -247,28 +248,8 @@ public class SnakesAndLaddersV20 extends JFrame {
     }
 
     /**
-     *Calls playAnimation from GUIDice and waits until it's over
-     * @return
-     */
-    public int rollDie() {
-        int result;
-        result = random.nextInt(6) + 1;
-        rollButton.setSelected(true);
-        rollButton.setEnabled(false);
-        die.playAnimation(result);
-        try {
-            Thread.sleep(1100);
-        } catch (InterruptedException ex) {
-            Logger.getLogger(SnakesAndLaddersV20.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        history.append(currentPlayer.getName() + " rolls a " + result);
-
-        return result;
-    }
-
-    /**
-     *Moves the player and applies effect calling the appropriate methods
+     * Moves the player and applies effect calling the appropriate methods
+     *
      * @param result
      */
     public void movementAndEffects(int result) {
@@ -281,12 +262,16 @@ public class SnakesAndLaddersV20 extends JFrame {
 
         updateGUI();
     }
-    
+
     private void endTurn() {
         currentPlayer = getOtherPlayer();
         rollButton.setSelected(false);
         rollButton.setEnabled(true);
         highlightPlayer(currentPlayer);
+        if (currentPlayer.getName() == "Computer") {
+            mySleep(300);
+            rollButton.doClick();
+        }
     }
 
     //Main Panel Building Methods===============================================
@@ -550,7 +535,10 @@ public class SnakesAndLaddersV20 extends JFrame {
 
                 public void run() {
                     //Play Animation and wait for it to finish
-                    result = rollDie();
+                    rollButton.setSelected(true);
+                    rollButton.setEnabled(false);
+                    result = die.roll();
+                    history.append(currentPlayer.getName() + " rolls a " + result);
                     //Move player and apply neccessary effects
                     movementAndEffects(result);
                     //Switch player and enable roll button
@@ -614,6 +602,9 @@ public class SnakesAndLaddersV20 extends JFrame {
             board.setPlayers(players[0], players[1]);
             currentPlayer = players[random.nextInt(2)]; //Select a random player to go first
             highlightPlayer(currentPlayer);
+            if (currentPlayer.getName() == "Computer") {
+                rollButton.doClick();
+            }
 
             boardPanel = new BoardPanel(board); //soc code
 
