@@ -166,26 +166,26 @@ public class Snake {
     }
 }
 
-class SnakeDrawingPanel extends JPanel {
-
-    private Point2D point0 = new Point2D.Double(100, 500);
-    private Point2D point1 = new Point2D.Double(700, 500);
-    private Point2D draggedPoint = null;
-    private Snake snake = new Snake();
-
-    @Override
-    protected void paintComponent(Graphics gr) {
-        super.paintComponent(gr);
-        Graphics2D g = (Graphics2D) gr;
-        g.setRenderingHint(
-                RenderingHints.KEY_ANTIALIASING,
-                RenderingHints.VALUE_ANTIALIAS_ON);
-
-        g.setColor(Color.WHITE);
-        g.fillRect(0, 0, getWidth(), getHeight());
-
-        snake.setPoints(point0, point1);
-        snake.draw(g);
-    }
-
-}
+//class SnakeDrawingPanel extends JPanel {
+//
+//    private Point2D point0 = new Point2D.Double(100, 500);
+//    private Point2D point1 = new Point2D.Double(700, 500);
+//    private Point2D draggedPoint = null;
+//    private Snake snake = new Snake();
+//
+//    @Override
+//    protected void paintComponent(Graphics gr) {
+//        super.paintComponent(gr);
+//        Graphics2D g = (Graphics2D) gr;
+//        g.setRenderingHint(
+//                RenderingHints.KEY_ANTIALIASING,
+//                RenderingHints.VALUE_ANTIALIAS_ON);
+//
+//        g.setColor(Color.WHITE);
+//        g.fillRect(0, 0, getWidth(), getHeight());
+//
+//        snake.setPoints(point0, point1);
+//        snake.draw(g);
+//    }
+//
+//}
