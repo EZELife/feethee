@@ -6,15 +6,12 @@
 package snakesandladders.main;
 
 import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.Shape;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Path2D;
 import java.awt.geom.Point2D;
-import javax.swing.JPanel;
 
 /**
  * 
@@ -23,8 +20,8 @@ import javax.swing.JPanel;
 
 public class Snake {
 
-    private Point2D point0 = new Point2D.Double(100, 500);
-    private Point2D point1 = new Point2D.Double(700, 500);
+    private Point2D point0 = new Point2D.Double(0, 0);
+    private Point2D point1 = new Point2D.Double(0, 0);
 
     double bodyWidth = 7;
     int waves = 4;
