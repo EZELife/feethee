@@ -45,7 +45,7 @@ import javax.swing.text.PlainDocument;
 import snakesandladders.main.Board.Difficulty;
 
 /**
- *
+ * Main class of the game
  * @author Zac
  */
 public class SnakesAndLaddersV20 extends JFrame {
@@ -206,8 +206,12 @@ public class SnakesAndLaddersV20 extends JFrame {
 
         return null;
     }
-
-    private void updateGUI() {
+    
+    /**
+     * Updates GUI elements, used every time a player's position changes
+     * or an effect happens
+     */
+    public void updateGUI() {
         board.updatePlayers(players[0].getSquare().getNumber(), players[1].getSquare().getNumber()); //soc code
 
         for (int i = 0; i < 2; i++) {
@@ -246,6 +250,14 @@ public class SnakesAndLaddersV20 extends JFrame {
 
         return COMColor;
     }
+    
+    /**
+     * "Clicks" roll button, used when it's the computer's turn
+     */
+    public void comRoll() {
+        mySleep(300);
+        rollButton.doClick();
+    }
 
     /**
      * Moves the player and applies effect calling the appropriate methods
@@ -269,8 +281,7 @@ public class SnakesAndLaddersV20 extends JFrame {
         rollButton.setEnabled(true);
         highlightPlayer(currentPlayer);
         if (currentPlayer.getName() == "Computer") {
-            mySleep(300);
-            rollButton.doClick();
+            comRoll();
         }
     }
 
@@ -603,7 +614,7 @@ public class SnakesAndLaddersV20 extends JFrame {
             currentPlayer = players[random.nextInt(2)]; //Select a random player to go first
             highlightPlayer(currentPlayer);
             if (currentPlayer.getName() == "Computer") {
-                rollButton.doClick();
+                comRoll();
             }
 
             boardPanel = new BoardPanel(board); //soc code

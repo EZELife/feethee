@@ -17,7 +17,7 @@ import java.awt.geom.Point2D;
 import javax.swing.JPanel;
 
 /**
- * 
+ * Used for drawing snakes
  * @author Zac
  */
 

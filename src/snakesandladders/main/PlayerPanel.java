@@ -10,7 +10,8 @@ import javax.swing.*;
 import javax.swing.border.Border;
 
 /**
- *
+ * Indicates current player's turn, shows position, name and color
+ * of player
  * @author Zac
  */
 public class PlayerPanel extends JPanel {
