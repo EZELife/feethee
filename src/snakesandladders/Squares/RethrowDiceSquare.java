@@ -40,6 +40,10 @@ public class RethrowDiceSquare extends Square {
         snl.getRollButton().setSelected(false);
         snl.getRollButton().setEnabled(true);
         snl.setEndTurnCondition(false);
+        snl.updateGUI();
+        if(snl.getCurrentPlayer().getName() == "Computer") {
+            snl.comRoll();
+        }
         
     }
 

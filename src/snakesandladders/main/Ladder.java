@@ -12,7 +12,7 @@ import java.awt.geom.Point2D;
 import javax.swing.JPanel;
 
 /**
- *
+ * Used for drawing ladders
  * @author Zac
  */
 public class Ladder extends JPanel {

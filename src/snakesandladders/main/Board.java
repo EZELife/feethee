@@ -51,7 +51,6 @@ public class Board extends JPanel implements Cloneable {
     //Fields
     private final int minTravelDistance = 10;
     private final int maxTravelDistance = 50;
-    private final int specialSquareDensity = 2;
     private boolean rebuild; //Used to rebuild Board in case of failure
     private Random random;
     private Square[] boardSquares;
